@@ -131,15 +131,15 @@
       margin-top: 3rem;
       padding-bottom: 2rem;
     }
-    textarea {
-      width: 100%;
+
+    #editableMessage {
+      min-height: 120px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
       padding: 12px;
       font-size: 1rem;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      resize: vertical;
     }
-    body:not(.light) textarea {
+    body:not(.light) #editableMessage {
       background: #1a1a1a;
       color: #eee;
       border-color: #444;
@@ -242,7 +242,7 @@
     <div class="card">
       <h2>📝 Your Message</h2>
       <p>This note is saved only in your browser and only visible to you.</p>
-      <textarea id="userMessage" placeholder="Write your own notes..." rows="5"></textarea>
+      <div id="editableMessage" contenteditable="true"></div>
     </div>
 
     <div class="footer">
@@ -256,19 +256,21 @@
       document.body.classList.toggle('light');
       localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
     }
+
     window.onload = () => {
       if (localStorage.getItem('theme') === 'light') {
         document.body.classList.add('light');
       }
-      const savedMessage = localStorage.getItem("userMessage");
+      const savedMessage = localStorage.getItem("editableMessage");
       if (savedMessage) {
-        document.getElementById("userMessage").value = savedMessage;
+        document.getElementById("editableMessage").innerHTML = savedMessage;
       }
     };
+
     document.addEventListener("DOMContentLoaded", function () {
-      const textarea = document.getElementById("userMessage");
-      textarea.addEventListener("input", function () {
-        localStorage.setItem("userMessage", textarea.value);
+      const editableDiv = document.getElementById("editableMessage");
+      editableDiv.addEventListener("input", function () {
+        localStorage.setItem("editableMessage", editableDiv.innerHTML);
       });
     });
   </script>
