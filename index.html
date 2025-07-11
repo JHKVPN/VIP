@@ -9,14 +9,14 @@
     :root {
       --bg-color: #0f0f0f;
       --text-color: #eee;
-      --accent-color: #00f;
+      --accent-color: #33b5ff;
       --vip-color: #00ff00;
       --card-bg: rgba(255, 255, 255, 0.05);
     }
     body.light {
       --bg-color: #ffffff;
       --text-color: #111;
-      --accent-color: #007bff;
+      --accent-color: #3399ff;
       --vip-color: #008800;
       --card-bg: #f2f2f2;
     }
@@ -28,7 +28,6 @@
       font-family: 'Roboto', sans-serif;
       background: var(--bg-color);
       color: var(--text-color);
-      line-height: 1.6;
       transition: background 0.4s, color 0.4s;
     }
     header {
@@ -59,7 +58,6 @@
       background: #000;
       overflow: hidden;
       white-space: nowrap;
-      box-shadow: inset 0 0 10px var(--accent-color);
       border-top: 2px solid var(--accent-color);
       border-bottom: 2px solid var(--accent-color);
     }
@@ -87,12 +85,7 @@
       border-radius: 15px;
       padding: 1.5rem;
       margin-bottom: 2rem;
-      backdrop-filter: blur(10px);
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      transition: transform 0.3s, background 0.4s;
-    }
-    .card:hover {
-      transform: translateY(-5px);
     }
     .card h2 {
       margin-top: 0;
@@ -110,11 +103,11 @@
       transition: background 0.3s;
     }
     .btn:hover {
-      background: #3399ff;
+      background: #5ecbff;
     }
     .server-label {
       display: block;
-      margin-top: 8px;
+      margin-top: 10px;
       font-weight: bold;
       color: var(--vip-color);
     }
@@ -166,37 +159,37 @@
 
   <div class="container">
 
-    <!-- Plan Cards -->
+    <!-- VIP Plans -->
     <div class="card">
       <h2>VIP Plan - 1 Month</h2>
       <p>Full access for 30 days</p>
       <p><strong>Price:</strong> 5,000 MMK</p>
+      <p><span class="server-label">🇹🇭 Thai Server</span></p>
       <a href="https://m.me/yourpage" class="btn" target="_blank">Buy Now</a>
-      <span class="server-label">🇹🇭 Thai Server</span>
     </div>
 
     <div class="card">
       <h2>VIP Plan - 2 Months</h2>
       <p>Full access for 60 days</p>
       <p><strong>Price:</strong> 9,000 MMK</p>
+      <p><span class="server-label">🇹🇭 Thai Server</span></p>
       <a href="https://m.me/yourpage" class="btn" target="_blank">Buy Now</a>
-      <span class="server-label">🇹🇭 Thai Server</span>
     </div>
 
     <div class="card">
       <h2>VIP Plan - 3 Months</h2>
       <p>Full access for 90 days</p>
       <p><strong>Price:</strong> 12,000 MMK</p>
+      <p><span class="server-label">🇹🇭 Thai Server</span></p>
       <a href="https://m.me/yourpage" class="btn" target="_blank">Buy Now</a>
-      <span class="server-label">🇹🇭 Thai Server</span>
     </div>
 
     <div class="card">
       <h2>VIP Plan - 6 Months</h2>
       <p>Full access for 180 days</p>
       <p><strong>Price:</strong> 20,000 MMK</p>
+      <p><span class="server-label">🇹🇭 Thai Server</span></p>
       <a href="https://m.me/yourpage" class="btn" target="_blank">Buy Now</a>
-      <span class="server-label">🇹🇭 Thai Server</span>
     </div>
 
     <!-- Software -->
@@ -210,7 +203,7 @@
     <div class="card">
       <h2>💳 Payment Methods</h2>
       <ul>
-        <li>✅ <strong>TrueMoney:</strong> 09xxxxxxx</li>
+        <li>✅ <strong>TrueMoney:</strong> 09xxxxxxxxx</li>
         <li>✅ <strong>Binance Pay:</strong> binanceuser123</li>
       </ul>
     </div>
@@ -221,7 +214,7 @@
       <ul>
         <li><span class="icon">📱</span>Telegram: <a href="https://t.me/youradmin" target="_blank">@youradmin</a></li>
         <li><span class="icon">💬</span>Messenger: <a href="https://m.me/yourpage" target="_blank">m.me/yourpage</a></li>
-        <li><span class="icon">📞</span>Phone: 09xxxxxxx</li>
+        <li><span class="icon">📞</span>Phone: 09xxxxxxxxx</li>
       </ul>
     </div>
 
