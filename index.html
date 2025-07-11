@@ -67,7 +67,7 @@
       font-family: monospace;
       padding: 10px 0;
       font-size: 16px;
-      animation: marquee 25s linear infinite;
+      animation: marquee 20s linear infinite;
     }
     @keyframes marquee {
       0% { transform: translateX(100%); }
@@ -109,7 +109,7 @@
       display: block;
       margin-top: 8px;
       font-weight: bold;
-      color: #222;
+      color: #000;
     }
     body:not(.light) .server-label {
       color: #ccc;
@@ -178,8 +178,7 @@
     <!-- VIP Plan Cards -->
     <div class="card">
       <h2>VIP Plan - 1 Month</h2>
-      <p>Full access for 30 days</p>
-      <p><strong>Price:</strong> 5,000 MMK</p>
+      <p>Price: 5,000 MMK</p>
       <p class="server-label">🇹🇭 Thai Server</p>
       <p class="server-label">Bandwidth Unlimited ✅</p>
       <p class="server-label">Online</p>
@@ -188,8 +187,7 @@
 
     <div class="card">
       <h2>VIP Plan - 2 Months</h2>
-      <p>Full access for 60 days</p>
-      <p><strong>Price:</strong> 9,000 MMK</p>
+      <p>Price: 9,000 MMK</p>
       <p class="server-label">🇹🇭 Thai Server</p>
       <p class="server-label">Bandwidth Unlimited ✅</p>
       <p class="server-label">Online</p>
@@ -198,8 +196,7 @@
 
     <div class="card">
       <h2>VIP Plan - 3 Months</h2>
-      <p>Full access for 90 days</p>
-      <p><strong>Price:</strong> 12,000 MMK</p>
+      <p>Price: 12,000 MMK</p>
       <p class="server-label">🇹🇭 Thai Server</p>
       <p class="server-label">Bandwidth Unlimited ✅</p>
       <p class="server-label">Online</p>
@@ -208,8 +205,7 @@
 
     <div class="card">
       <h2>VIP Plan - 6 Months</h2>
-      <p>Full access for 180 days</p>
-      <p><strong>Price:</strong> 20,000 MMK</p>
+      <p>Price: 20,000 MMK</p>
       <p class="server-label">🇹🇭 Thai Server</p>
       <p class="server-label">Bandwidth Unlimited ✅</p>
       <p class="server-label">Online</p>
@@ -245,8 +241,8 @@
     <!-- Custom Message Box -->
     <div class="card">
       <h2>📝 Your Message</h2>
-      <p>You can write anything here (questions, notes, extra info)...</p>
-      <textarea id="userMessage" placeholder="Type your message here..." rows="5"></textarea>
+      <p>This note is saved only in your browser and only visible to you.</p>
+      <textarea id="userMessage" placeholder="Write your own notes..." rows="5"></textarea>
     </div>
 
     <div class="footer">
@@ -264,7 +260,17 @@
       if (localStorage.getItem('theme') === 'light') {
         document.body.classList.add('light');
       }
+      const savedMessage = localStorage.getItem("userMessage");
+      if (savedMessage) {
+        document.getElementById("userMessage").value = savedMessage;
+      }
     };
+    document.addEventListener("DOMContentLoaded", function () {
+      const textarea = document.getElementById("userMessage");
+      textarea.addEventListener("input", function () {
+        localStorage.setItem("userMessage", textarea.value);
+      });
+    });
   </script>
 
 </body>
