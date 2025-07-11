@@ -52,7 +52,6 @@
       cursor: pointer;
       font-weight: bold;
     }
-
     .marquee-container {
       width: 100%;
       background: #000;
@@ -73,7 +72,6 @@
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
     }
-
     .container {
       max-width: 900px;
       margin: auto;
@@ -131,20 +129,9 @@
       margin-top: 3rem;
       padding-bottom: 2rem;
     }
-
-    #editableMessage {
-      min-height: 120px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      padding: 12px;
-      font-size: 1rem;
+    .card p strong {
+      color: var(--accent-color);
     }
-    body:not(.light) #editableMessage {
-      background: #1a1a1a;
-      color: #eee;
-      border-color: #444;
-    }
-
     @media (max-width: 600px) {
       .card {
         padding: 1rem;
@@ -238,11 +225,11 @@
       </ul>
     </div>
 
-    <!-- Custom Message Box -->
+    <!-- Public Info Section -->
     <div class="card">
-      <h2>📝 Your Message</h2>
-      <p>This note is saved only in your browser and only visible to you.</p>
-      <div id="editableMessage" contenteditable="true"></div>
+      <h2>🧘 Friendly Reminder</h2>
+      <p>ဉမမာ အဆင်ပြေပါစေ 🙏</p>
+      <p>Dtac အသုံးပြုသူများအတွက် စမတ်ပါ – <strong>*117*30#</strong> ကိုနှိပ်ပါ။</p>
     </div>
 
     <div class="footer">
@@ -256,23 +243,11 @@
       document.body.classList.toggle('light');
       localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
     }
-
     window.onload = () => {
       if (localStorage.getItem('theme') === 'light') {
         document.body.classList.add('light');
       }
-      const savedMessage = localStorage.getItem("editableMessage");
-      if (savedMessage) {
-        document.getElementById("editableMessage").innerHTML = savedMessage;
-      }
     };
-
-    document.addEventListener("DOMContentLoaded", function () {
-      const editableDiv = document.getElementById("editableMessage");
-      editableDiv.addEventListener("input", function () {
-        localStorage.setItem("editableMessage", editableDiv.innerHTML);
-      });
-    });
   </script>
 
 </body>
