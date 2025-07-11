@@ -4,269 +4,104 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>VIP Plans</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg-color: #0f0f0f;
-      --text-color: #eee;
-      --accent-color: #33b5ff;
-      --vip-color: #00ff00;
-      --card-bg: rgba(255, 255, 255, 0.05);
-    }
-    body.light {
-      --bg-color: #ffffff;
-      --text-color: #111;
-      --accent-color: #3399ff;
-      --vip-color: #008800;
-      --card-bg: #f2f2f2;
-    }
-    * {
-      box-sizing: border-box;
-    }
     body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
       margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-      transition: background 0.4s, color 0.4s;
+      padding: 20px;
     }
-    header {
+    h1, h2 {
       text-align: center;
-      padding: 2rem 1rem 1rem;
-      background: #111;
-      color: var(--accent-color);
-      font-size: 2rem;
+      color: #333;
+    }
+    .plans, .codes, .contact {
+      max-width: 800px;
+      margin: 30px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .plan-list {
+      display: flex;
+      justify-content: space-around;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .plan-card {
+      flex: 1;
+      background: #e3f2fd;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
       font-weight: bold;
-      letter-spacing: 1px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+      color: #0d47a1;
     }
-    .theme-toggle {
-      position: absolute;
-      right: 1rem;
-      top: 1.5rem;
-      background: var(--accent-color);
-      color: #fff;
-      border: none;
-      padding: 6px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
+    .images {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
     }
-    .marquee-container {
-      width: 100%;
-      background: #000;
-      overflow: hidden;
-      white-space: nowrap;
-      border-top: 2px solid var(--accent-color);
-      border-bottom: 2px solid var(--accent-color);
-    }
-    .marquee-text {
-      display: inline-block;
-      color: var(--accent-color);
-      font-family: monospace;
-      padding: 10px 0;
-      font-size: 16px;
-      animation: marquee 20s linear infinite;
-    }
-    @keyframes marquee {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 2rem 1rem;
-    }
-    .card {
-      background: var(--card-bg);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 15px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-    .card h2 {
-      margin-top: 0;
-      color: var(--vip-color);
-    }
-    .btn {
-      display: inline-block;
-      background: var(--accent-color);
-      color: #fff;
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
-      font-weight: bold;
-      text-decoration: none;
-      margin-top: 1rem;
-      transition: background 0.3s;
-    }
-    .btn:hover {
-      background: #5ecbff;
-    }
-    .server-label {
-      display: block;
-      margin-top: 8px;
-      font-weight: bold;
-      color: #000;
-    }
-    body:not(.light) .server-label {
-      color: #ccc;
+    .images img {
+      width: 45%;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
     ul {
       list-style: none;
       padding: 0;
     }
     ul li {
-      padding: 0.5rem 0;
+      padding: 8px 0;
+      font-size: 16px;
+      border-bottom: 1px solid #ddd;
     }
-    .icon {
-      margin-right: 0.5rem;
+    .contact div {
+      margin-top: 10px;
+      font-size: 16px;
     }
-    .footer {
-      text-align: center;
-      font-size: 0.85rem;
-      color: #888;
-      margin-top: 3rem;
-      padding-bottom: 2rem;
-    }
-    .card p strong {
-      color: var(--accent-color);
-    }
-    .public-box {
-      background: #222;
-      border: 1px solid var(--accent-color);
-      padding: 1rem;
-      border-radius: 10px;
-      font-size: 14px;
-      line-height: 1.6;
-      white-space: pre-line;
-      color: #fff;
-    }
-    body.light .public-box {
-      background: #f9f9f9;
-      color: #111;
-      border-color: #ccc;
-    }
-    @media (max-width: 600px) {
-      .card {
-        padding: 1rem;
-      }
-      header {
-        font-size: 1.5rem;
-      }
-      .marquee-text {
-        font-size: 14px;
-      }
+    .highlight {
+      color: green;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
-  <button class="theme-toggle" onclick="toggleTheme()">🌗 Theme</button>
+  <h1>VIP Internet Plans</h1>
 
-  <header>
-    🚀 VIP ACCESS PLANS
-  </header>
+  <div class="plans">
+    <h2>🔥 VIP Plans</h2>
+    <div class="plan-list">
+      <div class="plan-card">VIP 1 Month <br> <span class="highlight">50 THB</span></div>
+      <div class="plan-card">VIP 2 Months <br> <span class="highlight">100 THB</span></div>
+    </div>
 
-  <!-- Running Text -->
-  <div class="marquee-container">
-    <div class="marquee-text">
-      🔵 VIP Now Available! 1M - 50 THB | 2M - 100 THB | 3M - 150 THB | 6M - 250 MMK | Bandwidth Unlimited ✅ | Thai Server 🇹🇭 | Contact Admin via Messenger 🔵
+    <div class="images">
+      <img src="your-image-1.jpg" alt="VIP Image 1">
+      <img src="your-image-2.jpg" alt="VIP Image 2">
     </div>
   </div>
 
-  <div class="container">
-
-    <!-- VIP Plan Cards -->
-    <div class="card">
-      <h2>VIP Plan - 1 Month</h2>
-      <p>Price: 50 THB</p>
-      <p class="server-label">🇹🇭 Thai Server</p>
-      <p class="server-label">✅ Bandwidth Unlimited</p>
-      <p class="server-label">🟢 Online</p>
-      <a href="https://t.me/Pussy1990" class="btn" target="_blank">Buy Now</a>
-    </div>
-
-    <div class="card">
-      <h2>VIP Plan - 2 Months</h2>
-      <p>Price: 100 THB</p>
-      <p class="server-label">🇹🇭 Thai Server</p>
-      <p class="server-label">✅ Bandwidth Unlimited</p>
-      <p class="server-label">🟢 Online</p>
-      <a href="https://t.me/Pussy1990" class="btn" target="_blank">Buy Now</a>
-    </div>
-
-    <div class="card">
-      <h2>VIP Plan - 3 Months</h2>
-      <p>Price: 150 THB</p>
-      <p class="server-label">🇹🇭 Thai Server</p>
-      <p class="server-label">✅ Bandwidth Unlimited</p>
-      <p class="server-label">🟢 Online</p>
-      <a href="https://t.me/Pussy1990" class="btn" target="_blank">Buy Now</a>
-    </div>
-
-    <div class="card">
-      <h2>VIP Plan - 6 Months</h2>
-      <p>Price: 250 THB</p>
-      <p class="server-label">🇹🇭 Thai Server</p>
-      <p class="server-label">✅ Bandwidth Unlimited</p>
-      <p class="server-label">🟢 Online</p>
-      <a href="https://t.me/Pussy1990" class="btn" target="_blank">Buy Now</a>
-    </div>
-
-    <!-- Software Download -->
-    <div class="card">
-      <h2>📦 Software Download</h2>
-      <p>Download available after payment confirmation.</p>
-      <a href="https://example.com/download" class="btn" target="_blank">Download Now</a>
-    </div>
-
-    <!-- Payment Methods -->
-    <div class="card">
-      <h2>💳 Payment Methods</h2>
-      <ul>
-        <li>✅ <strong>TrueMoney:</strong> 0953244179</li>
-        <li>✅ <strong>Binance ID:</strong> 219766442</li>
-      </ul>
-    </div>
-
-    <!-- Contact Admin -->
-    <div class="card">
-      <h2>📞 Contact Admin</h2>
-      <ul>
-        <li><span class="icon">📨</span> Telegram: <a href="https://t.me/Pussy1990" target="_blank">@youradmin</a></li>
-        <li><span class="icon">💬</span> Messenger: <a href="https://m.me/yourpage" target="_blank">m.me/yourpage</a></li>
-        <li><span class="icon">📞</span> Phone: 09xxxxxxxxx</li>
-      </ul>
-    </div>
-
-    <!-- Public Message -->
-    <div class="card">
-      <h2>🧘 အသုံးပြုနည်း</h2>
-      <div class="public-box">
-        ဥပမာ အသုံးပြုနည်း
-
-        Dtac - *117*30# (စမတ်)
-
-        True - *900*8131# (စမတ်)
-      </div>
-    </div>
-
-    <div class="footer">
-      &copy; 2025 VIP Access | Made with 💙 by JueHtet.
-    </div>
+  <div class="codes">
+    <h2>📲 Jaidee Codes & Plans</h2>
+    <ul>
+      <li>DTAC Jaidee Code: <strong>*117*30#</strong> (30 THB)</li>
+      <li>TRUE Jaidee Code: <strong>*900*8131#</strong> (31.50 THB)</li>
+      <li>DTAC Gaming Plan</li>
+      <li>True Viber Plan</li>
+      <li>True VDO Plan</li>
+    </ul>
   </div>
 
-  <script>
-    function toggleTheme() {
-      document.body.classList.toggle('light');
-      localStorage.setItem('theme', document.body.classList.contains('light') ? 'light' : 'dark');
-    }
-    window.onload = () => {
-      if (localStorage.getItem('theme') === 'light') {
-        document.body.classList.add('light');
-      }
-    };
-  </script>
+  <div class="contact">
+    <h2>📞 Contact & Thai Payment</h2>
+    <div>LINE ID: yourlineid</div>
+    <div>PromptPay: 0123456789</div>
+    <div>TrueMoney Wallet: 098-765-4321</div>
+    <div>Binance: <span class="highlight">BNB / USDT accepted</span></div>
+  </div>
+
 </body>
 </html>
