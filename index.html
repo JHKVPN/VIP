@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VIP Plans</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VIP Plans with Car Animation</title>
   <style>
     :root {
       --bg-color: #f5f7fa;
@@ -28,9 +28,10 @@
       margin: 0;
       padding: 20px;
       transition: background 0.3s, color 0.3s;
+      overflow-x: hidden; /* Prevent horizontal scroll due to animation */
     }
 
-    /* Theme toggle button OUTSIDE led box */
+    /* Theme toggle button */
     .theme-toggle {
       position: fixed;
       top: 15px;
@@ -46,7 +47,7 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
 
-    /* LED-style header (only animation) */
+    /* LED-style header with pulse animation */
     .led-text {
       text-align: center;
       font-size: 28px;
@@ -59,12 +60,70 @@
       letter-spacing: 1px;
       animation: pulse 1.5s infinite ease-in-out;
       max-width: 800px;
+      position: relative;
+      z-index: 1;
     }
 
     @keyframes pulse {
       0%   { opacity: 1; }
       50%  { opacity: 0.4; }
       100% { opacity: 1; }
+    }
+
+    /* Car animation container */
+    .car-container {
+      position: relative;
+      width: 100%;
+      height: 60px; /* Height of car animation area */
+      overflow: hidden;
+      margin: 0 auto 30px;
+      max-width: 800px;
+      background: transparent;
+    }
+
+    /* Car element */
+    .car {
+      position: absolute;
+      top: 10px;
+      left: -100px; /* Start off-screen */
+      width: 80px;
+      height: 40px;
+      background: #1e88e5;
+      border-radius: 15px 15px 10px 10px;
+      box-shadow: 0 5px 0 #0d47a1 inset;
+      animation: drive 6s linear infinite;
+    }
+
+    /* Wheels */
+    .car::before,
+    .car::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      width: 18px;
+      height: 18px;
+      background: #222;
+      border-radius: 50%;
+      border: 3px solid #555;
+      box-shadow: inset -3px -3px 5px rgba(0,0,0,0.6);
+    }
+
+    .car::before {
+      left: 12px;
+    }
+
+    .car::after {
+      right: 12px;
+    }
+
+    /* Car drive animation */
+    @keyframes drive {
+      0% {
+        left: -100px;
+      }
+      100% {
+        left: 110%;
+      }
     }
 
     h1, h2 {
@@ -155,11 +214,16 @@
 </head>
 <body>
 
-  <!-- Theme Toggle Button (OUTSIDE LED text) -->
+  <!-- Theme Toggle Button -->
   <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
 
-  <!-- LED Header (pulse animation, clean text) -->
+  <!-- LED Header -->
   <div class="led-text">🌐 Welcome to VIP Internet Zone 🌐</div>
+
+  <!-- Car animation -->
+  <div class="car-container">
+    <div class="car"></div>
+  </div>
 
   <h1>VIP Internet Plans</h1>
 
@@ -171,8 +235,8 @@
     </div>
 
     <div class="images">
-      <img src="your-image-1.jpg" alt="VIP Image 1">
-      <img src="your-image-2.jpg" alt="VIP Image 2">
+      <img src="your-image-1.jpg" alt="VIP Image 1" />
+      <img src="your-image-2.jpg" alt="VIP Image 2" />
     </div>
   </div>
 
@@ -200,12 +264,10 @@
     <div>Binance: <span class="highlight">BNB / USDT accepted</span></div>
   </div>
 
-  <!-- Theme Toggle Script -->
   <script>
     function toggleTheme() {
       document.body.classList.toggle("dark");
     }
   </script>
-
 </body>
 </html>
