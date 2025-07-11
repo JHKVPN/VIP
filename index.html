@@ -30,7 +30,7 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    /* Theme toggle button */
+    /* Theme toggle button OUTSIDE led box */
     .theme-toggle {
       position: fixed;
       top: 15px;
@@ -46,7 +46,7 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
 
-    /* LED-style header with light/dim animation (no glow) */
+    /* LED-style header (only animation) */
     .led-text {
       text-align: center;
       font-size: 28px;
@@ -54,10 +54,11 @@
       color: var(--led-color);
       background-color: #000;
       padding: 15px 10px;
-      margin-bottom: 20px;
+      margin: 60px auto 20px;
       border-radius: 12px;
       letter-spacing: 1px;
       animation: pulse 1.5s infinite ease-in-out;
+      max-width: 800px;
     }
 
     @keyframes pulse {
@@ -154,10 +155,10 @@
 </head>
 <body>
 
-  <!-- Theme Toggle Button -->
+  <!-- Theme Toggle Button (OUTSIDE LED text) -->
   <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
 
-  <!-- LED Light/Dark Pulse Header -->
+  <!-- LED Header (pulse animation, clean text) -->
   <div class="led-text">🌐 Welcome to VIP Internet Zone 🌐</div>
 
   <h1>VIP Internet Plans</h1>
