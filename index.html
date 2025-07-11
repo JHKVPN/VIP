@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>VIP Plans with Running Man Animation</title>
+<title>VIP Plans with Train Animation</title>
 <style>
   :root {
     --bg-color: #f5f7fa;
@@ -70,8 +70,8 @@
     100% { opacity: 1; }
   }
 
-  /* Running man animation container */
-  .runner-container {
+  /* Train animation container */
+  .train-container {
     position: relative;
     width: 100%;
     max-width: 800px;
@@ -80,36 +80,109 @@
     overflow: hidden;
   }
 
-  /* Running man SVG */
-  .runner {
+  /* SVG train */
+  .train {
     position: absolute;
     top: 10px;
-    left: -100px;
-    width: 60px;
-    height: 80px;
-    animation: run 5s linear infinite;
+    left: -200px;
+    width: 180px;
+    height: 70px;
+    animation: drive 6s linear infinite;
   }
 
-  @keyframes run {
+  @keyframes drive {
     0% {
-      left: -100px;
-      transform: scaleX(1);
-    }
-    49% {
-      transform: scaleX(1);
-    }
-    50% {
-      transform: scaleX(-1); /* Flip horizontally */
+      left: -200px;
     }
     100% {
       left: 110%;
-      transform: scaleX(-1);
     }
   }
 
-  /* Simple running man SVG shape */
-  /* You can replace this with a more detailed SVG if you want */
+  h1, h2 {
+    text-align: center;
+  }
 
+  .plans, .codes, .contact {
+    max-width: 800px;
+    margin: 30px auto;
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: background 0.3s;
+  }
+
+  .plan-list {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin: 20px 0;
+  }
+
+  .plan-card {
+    flex: 1;
+    background: var(--plan-bg);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: #0d47a1;
+  }
+
+  .download {
+    text-align: center;
+    margin: 30px 0;
+  }
+
+  .download a {
+    display: inline-block;
+    background-color: #0d47a1;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+  }
+
+  .download a:hover {
+    background-color: #1565c0;
+  }
+
+  .images {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+
+  .images img {
+    width: 45%;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul li {
+    padding: 8px 0;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .contact div {
+    margin-top: 10px;
+    font-size: 16px;
+  }
+
+  .highlight {
+    color: green;
+    font-weight: bold;
+  }
 </style>
 </head>
 <body>
@@ -120,21 +193,18 @@
   <!-- LED header -->
   <div class="led-text">🌐 Welcome to VIP Internet Zone 🌐</div>
 
-  <!-- Running man animation -->
-  <div class="runner-container">
-    <svg class="runner" viewBox="0 0 64 80" xmlns="http://www.w3.org/2000/svg" fill="#1e88e5" stroke="#0d47a1" stroke-width="2">
-      <!-- Head -->
-      <circle cx="32" cy="12" r="8" fill="#ffcc99" stroke="#b3745e"/>
-      <!-- Body -->
-      <line x1="32" y1="20" x2="32" y2="48" stroke="#1e88e5" stroke-width="6" stroke-linecap="round"/>
-      <!-- Left arm -->
-      <line x1="32" y1="28" x2="10" y2="44" stroke="#1e88e5" stroke-width="5" stroke-linecap="round"/>
-      <!-- Right arm -->
-      <line x1="32" y1="28" x2="54" y2="38" stroke="#1e88e5" stroke-width="5" stroke-linecap="round"/>
-      <!-- Left leg -->
-      <line x1="32" y1="48" x2="14" y2="76" stroke="#1e88e5" stroke-width="6" stroke-linecap="round"/>
-      <!-- Right leg -->
-      <line x1="32" y1="48" x2="50" y2="70" stroke="#1e88e5" stroke-width="6" stroke-linecap="round"/>
+  <!-- Train animation -->
+  <div class="train-container">
+    <svg class="train" viewBox="0 0 200 70" xmlns="http://www.w3.org/2000/svg" fill="#3f51b5" stroke="#283593" stroke-width="2">
+      <!-- Engine -->
+      <rect x="10" y="20" width="70" height="30" rx="5" ry="5" />
+      <rect x="70" y="10" width="30" height="40" rx="5" ry="5" fill="#5c6bc0" />
+      <circle cx="40" cy="55" r="10" fill="#212121" />
+      <circle cx="80" cy="55" r="10" fill="#212121" />
+      <!-- Wagon -->
+      <rect x="110" y="20" width="80" height="30" rx="5" ry="5" fill="#7986cb" />
+      <circle cx="140" cy="55" r="10" fill="#212121" />
+      <circle cx="180" cy="55" r="10" fill="#212121" />
     </svg>
   </div>
 
@@ -142,44 +212,38 @@
 
   <div class="plans">
     <h2>🔥 VIP Plans</h2>
-    <div class="plan-list" style="display:flex; justify-content:center; gap:20px; margin:20px 0;">
-      <div style="background:#e3f2fd; padding:15px; border-radius:10px; text-align:center; font-weight:bold; color:#0d47a1;">
-        VIP 1 Month <br> <span style="color:green; font-weight:bold;">50 THB</span>
-      </div>
-      <div style="background:#e3f2fd; padding:15px; border-radius:10px; text-align:center; font-weight:bold; color:#0d47a1;">
-        VIP 2 Months <br> <span style="color:green; font-weight:bold;">100 THB</span>
-      </div>
+    <div class="plan-list">
+      <div class="plan-card">VIP 1 Month <br> <span class="highlight">50 THB</span></div>
+      <div class="plan-card">VIP 2 Months <br> <span class="highlight">100 THB</span></div>
     </div>
 
-    <div class="images" style="display:flex; justify-content:space-around; margin-top:20px;">
-      <img src="your-image-1.jpg" alt="VIP Image 1" style="width:45%; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.2);" />
-      <img src="your-image-2.jpg" alt="VIP Image 2" style="width:45%; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.2);" />
+    <div class="images">
+      <img src="your-image-1.jpg" alt="VIP Image 1" />
+      <img src="your-image-2.jpg" alt="VIP Image 2" />
     </div>
   </div>
 
-  <div style="text-align:center; margin:30px 0;">
-    <a href="your-apk-link.apk" download style="background:#0d47a1; color:#fff; padding:12px 24px; border-radius:30px; font-weight:bold; text-decoration:none; box-shadow:0 4px 8px rgba(0,0,0,0.2); transition:background-color 0.3s ease;">
-      📥 DOWNLOAD APK
-    </a>
+  <div class="download">
+    <a href="your-apk-link.apk" download>📥 DOWNLOAD APK</a>
   </div>
 
-  <div style="max-width:800px; margin:30px auto; background:#fff; padding:20px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+  <div class="codes">
     <h2>📲 Jaidee Codes & Plans</h2>
-    <ul style="list-style:none; padding:0; font-size:16px;">
-      <li style="padding:8px 0; border-bottom:1px solid #ddd;">DTAC Jaidee Code: <strong>*117*30#</strong> (30 THB)</li>
-      <li style="padding:8px 0; border-bottom:1px solid #ddd;">TRUE Jaidee Code: <strong>*900*8131#</strong> (31.50 THB)</li>
-      <li style="padding:8px 0; border-bottom:1px solid #ddd;">DTAC Gaming Plan</li>
-      <li style="padding:8px 0; border-bottom:1px solid #ddd;">True Viber Plan</li>
-      <li style="padding:8px 0; border-bottom:1px solid #ddd;">True VDO Plan</li>
+    <ul>
+      <li>DTAC Jaidee Code: <strong>*117*30#</strong> (30 THB)</li>
+      <li>TRUE Jaidee Code: <strong>*900*8131#</strong> (31.50 THB)</li>
+      <li>DTAC Gaming Plan</li>
+      <li>True Viber Plan</li>
+      <li>True VDO Plan</li>
     </ul>
   </div>
 
-  <div style="max-width:800px; margin:30px auto; background:#fff; padding:20px; border-radius:12px; box-shadow:0 2px 8px rgba(0,0,0,0.1); font-size:16px;">
+  <div class="contact">
     <h2>📞 Contact & Thai Payment</h2>
     <div>LINE ID: yourlineid</div>
     <div>PromptPay: 0123456789</div>
     <div>TrueMoney Wallet: 098-765-4321</div>
-    <div>Binance: <span style="color:green; font-weight:bold;">BNB / USDT accepted</span></div>
+    <div>Binance: <span class="highlight">BNB / USDT accepted</span></div>
   </div>
 
 <script>
