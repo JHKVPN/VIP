@@ -131,6 +131,19 @@
       margin-top: 3rem;
       padding-bottom: 2rem;
     }
+    textarea {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+    body:not(.light) textarea {
+      background: #1a1a1a;
+      color: #eee;
+      border-color: #444;
+    }
 
     @media (max-width: 600px) {
       .card {
@@ -227,6 +240,13 @@
         <li><span class="icon">💬</span>Messenger: <a href="https://m.me/yourpage" target="_blank">m.me/yourpage</a></li>
         <li><span class="icon">📞</span>Phone: 09xxxxxxxxx</li>
       </ul>
+    </div>
+
+    <!-- Custom Message Box -->
+    <div class="card">
+      <h2>📝 Your Message</h2>
+      <p>You can write anything here (questions, notes, extra info)...</p>
+      <textarea id="userMessage" placeholder="Type your message here..." rows="5"></textarea>
     </div>
 
     <div class="footer">
