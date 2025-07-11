@@ -1,228 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VIP Plans with Car Animation</title>
-  <style>
-    :root {
-      --bg-color: #f5f7fa;
-      --text-color: #333;
-      --card-bg: #fff;
-      --plan-bg: #e3f2fd;
-      --led-color: #00FF00;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VIP Plans with Car Animation</title>
+<style>
+  :root {
+    --bg-color: #f5f7fa;
+    --text-color: #333;
+    --card-bg: #fff;
+    --plan-bg: #e3f2fd;
+    --led-color: #00FF00;
+  }
 
-    body.dark {
-      --bg-color: #1e1e1e;
-      --text-color: #fff;
-      --card-bg: #2c2c2c;
-      --plan-bg: #263238;
-      --led-color: #00FF00;
-    }
+  body.dark {
+    --bg-color: #1e1e1e;
+    --text-color: #fff;
+    --card-bg: #2c2c2c;
+    --plan-bg: #263238;
+    --led-color: #00FF00;
+  }
 
-    body {
-      font-family: Arial, sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-      margin: 0;
-      padding: 20px;
-      transition: background 0.3s, color 0.3s;
-      overflow-x: hidden; /* Prevent horizontal scroll due to animation */
-    }
+  body {
+    font-family: Arial, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    transition: background 0.3s, color 0.3s;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
 
-    /* Theme toggle button */
-    .theme-toggle {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      background: #000;
-      color: #0f0;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      z-index: 999;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
+  /* Theme toggle button */
+  .theme-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: #000;
+    color: #0f0;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 999;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
 
-    /* LED-style header with pulse animation */
-    .led-text {
-      text-align: center;
-      font-size: 28px;
-      font-weight: bold;
-      color: var(--led-color);
-      background-color: #000;
-      padding: 15px 10px;
-      margin: 60px auto 20px;
-      border-radius: 12px;
-      letter-spacing: 1px;
-      animation: pulse 1.5s infinite ease-in-out;
-      max-width: 800px;
-      position: relative;
-      z-index: 1;
-    }
+  /* LED header */
+  .led-text {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--led-color);
+    background-color: #000;
+    padding: 15px 10px;
+    margin: 60px auto 20px;
+    border-radius: 12px;
+    letter-spacing: 1px;
+    animation: pulse 1.5s infinite ease-in-out;
+    max-width: 800px;
+    position: relative;
+    z-index: 1;
+  }
 
-    @keyframes pulse {
-      0%   { opacity: 1; }
-      50%  { opacity: 0.4; }
-      100% { opacity: 1; }
-    }
+  @keyframes pulse {
+    0%   { opacity: 1; }
+    50%  { opacity: 0.4; }
+    100% { opacity: 1; }
+  }
 
-    /* Car animation container */
-    .car-container {
-      position: relative;
-      width: 100%;
-      height: 60px; /* Height of car animation area */
-      overflow: hidden;
-      margin: 0 auto 30px;
-      max-width: 800px;
-      background: transparent;
-    }
+  /* Car animation container */
+  .car-container {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    max-width: 800px;
+    margin: 0 auto 30px;
+    overflow: hidden;
+  }
 
-    /* Car element */
-    .car {
-      position: absolute;
-      top: 10px;
-      left: -100px; /* Start off-screen */
-      width: 80px;
-      height: 40px;
-      background: #1e88e5;
-      border-radius: 15px 15px 10px 10px;
-      box-shadow: 0 5px 0 #0d47a1 inset;
-      animation: drive 6s linear infinite;
-    }
+  /* SVG car */
+  .car {
+    position: absolute;
+    top: 10px;
+    left: -150px;
+    width: 120px;
+    height: 60px;
+    animation: drive 6s linear infinite;
+  }
 
-    /* Wheels */
-    .car::before,
-    .car::after {
-      content: "";
-      position: absolute;
-      bottom: -10px;
-      width: 18px;
-      height: 18px;
-      background: #222;
-      border-radius: 50%;
-      border: 3px solid #555;
-      box-shadow: inset -3px -3px 5px rgba(0,0,0,0.6);
+  @keyframes drive {
+    0% {
+      left: -150px;
     }
+    100% {
+      left: 110%;
+    }
+  }
 
-    .car::before {
-      left: 12px;
-    }
+  h1, h2 {
+    text-align: center;
+  }
 
-    .car::after {
-      right: 12px;
-    }
+  .plans, .codes, .contact {
+    max-width: 800px;
+    margin: 30px auto;
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: background 0.3s;
+  }
 
-    /* Car drive animation */
-    @keyframes drive {
-      0% {
-        left: -100px;
-      }
-      100% {
-        left: 110%;
-      }
-    }
+  .plan-list {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin: 20px 0;
+  }
 
-    h1, h2 {
-      text-align: center;
-    }
+  .plan-card {
+    flex: 1;
+    background: var(--plan-bg);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: #0d47a1;
+  }
 
-    .plans, .codes, .contact {
-      max-width: 800px;
-      margin: 30px auto;
-      background: var(--card-bg);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: background 0.3s;
-    }
+  .download {
+    text-align: center;
+    margin: 30px 0;
+  }
 
-    .plan-list {
-      display: flex;
-      justify-content: space-around;
-      gap: 20px;
-      margin: 20px 0;
-    }
+  .download a {
+    display: inline-block;
+    background-color: #0d47a1;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease;
+  }
 
-    .plan-card {
-      flex: 1;
-      background: var(--plan-bg);
-      padding: 15px;
-      border-radius: 10px;
-      text-align: center;
-      font-weight: bold;
-      color: #0d47a1;
-    }
+  .download a:hover {
+    background-color: #1565c0;
+  }
 
-    .download {
-      text-align: center;
-      margin: 30px 0;
-    }
+  .images {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
 
-    .download a {
-      display: inline-block;
-      background-color: #0d47a1;
-      color: white;
-      padding: 12px 24px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: background-color 0.3s ease;
-    }
+  .images img {
+    width: 45%;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
 
-    .download a:hover {
-      background-color: #1565c0;
-    }
+  ul {
+    list-style: none;
+    padding: 0;
+  }
 
-    .images {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 20px;
-    }
+  ul li {
+    padding: 8px 0;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+  }
 
-    .images img {
-      width: 45%;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
+  .contact div {
+    margin-top: 10px;
+    font-size: 16px;
+  }
 
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    ul li {
-      padding: 8px 0;
-      font-size: 16px;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .contact div {
-      margin-top: 10px;
-      font-size: 16px;
-    }
-
-    .highlight {
-      color: green;
-      font-weight: bold;
-    }
-  </style>
+  .highlight {
+    color: green;
+    font-weight: bold;
+  }
+</style>
 </head>
 <body>
 
-  <!-- Theme Toggle Button -->
+  <!-- Theme toggle button -->
   <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
 
-  <!-- LED Header -->
+  <!-- LED header -->
   <div class="led-text">🌐 Welcome to VIP Internet Zone 🌐</div>
 
   <!-- Car animation -->
   <div class="car-container">
-    <div class="car"></div>
+    <svg class="car" viewBox="0 0 64 32" xmlns="http://www.w3.org/2000/svg" fill="#1e88e5" stroke="#0d47a1" stroke-width="2" >
+      <!-- Car body -->
+      <rect x="8" y="10" width="40" height="12" rx="4" ry="4" />
+      <!-- Car roof -->
+      <polygon points="12,10 24,4 40,4 48,10" />
+      <!-- Wheels -->
+      <circle cx="18" cy="24" r="6" fill="#222" stroke="#555" stroke-width="2"/>
+      <circle cx="46" cy="24" r="6" fill="#222" stroke="#555" stroke-width="2"/>
+    </svg>
   </div>
 
   <h1>VIP Internet Plans</h1>
@@ -240,7 +221,6 @@
     </div>
   </div>
 
-  <!-- APK Download Link -->
   <div class="download">
     <a href="your-apk-link.apk" download>📥 DOWNLOAD APK</a>
   </div>
@@ -264,10 +244,11 @@
     <div>Binance: <span class="highlight">BNB / USDT accepted</span></div>
   </div>
 
-  <script>
-    function toggleTheme() {
-      document.body.classList.toggle("dark");
-    }
-  </script>
+<script>
+  function toggleTheme() {
+    document.body.classList.toggle("dark");
+  }
+</script>
+
 </body>
 </html>
