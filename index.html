@@ -58,22 +58,17 @@
       margin: 60px auto 20px;
       border-radius: 12px;
       letter-spacing: 1px;
-      animation: pulse 1.5s infinite ease-in-out, color-shift 3s infinite linear;
+      animation: color-shift 3s infinite linear;
       max-width: 800px;
       color: #00ff00;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
     @keyframes color-shift {
-      0%   { color: #ffff00; } /* Yellow */
-      20%  { color: #00ff00; } /* Green */
-      40%  { color: #ff0000; } /* Red */
-      60%  { color: #0000ff; } /* Blue */
-      80%  { color: #ff00ff; } /* Pink */
+      0%   { color: #ffff00; }
+      20%  { color: #00ff00; }
+      40%  { color: #ff0000; }
+      60%  { color: #0000ff; }
+      80%  { color: #ff00ff; }
       100% { color: #ffff00; }
     }
 
@@ -93,7 +88,7 @@
       font-size: 20px;
       font-weight: bold;
       color: #00BFFF;
-      animation: marquee 15s linear infinite;
+      animation: marquee 25s linear infinite;
     }
 
     @keyframes marquee {
@@ -251,12 +246,12 @@
 
   <div class="led-text">🙏🏿 JK VIP VPN 🙏🏿</div>
 
-  <!-- 🟦 Updated Running Text -->
   <div class="marquee-box">
-    <div class="marquee-content">📢 VIP 1Month 50 ,2Months 100,3Months 120 အချိန်တိုးစရာမလိုပါ တလအကြိုက်သုံး။ 📢 VIP 1Month 50 ,2Months 100,3Months 120 အချိန်တိုးစရာမလိုပါ တလအကြိုက်သုံး</div>
+    <div class="marquee-content">
+      📢 VIP 1Month 50 ,2Months 100,3Months 120 အချိန်တိုးစရာမလိုပါ တလအကြိုက်သုံး။ 📢 VIP 1Month 50 ,2Months 100,3Months 120 အချိန်တိုးစရာမလိုပါ တလအကြိုက်သုံး။
+    </div>
   </div>
 
-  <!-- Lottie Rocket Animation -->
   <div class="lottie-container" id="lottie-rocket"></div>
 
   <h1>VIP INTERNET PLANS</h1>
@@ -319,7 +314,6 @@
     </div>
   </div>
 
-  <!-- Lottie Script -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>
   <script>
     lottie.loadAnimation({
