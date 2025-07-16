@@ -129,10 +129,13 @@
     @media(min-width: 600px) {
       .plan-list {
         flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
       }
     }
     .plan-card {
       flex: 1;
+      min-width: 200px;
       background: linear-gradient(135deg, var(--plan-bg) 0%, #1e1e3f 100%);
       padding: 20px;
       border-radius: 12px;
@@ -146,6 +149,32 @@
     .plan-card:hover {
       transform: scale(1.05);
       box-shadow: 0 8px 20px rgba(138, 43, 226, 0.5);
+    }
+    .plan-title {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: var(--highlight-color);
+    }
+    .plan-price {
+      font-size: 1.8rem;
+      margin: 10px 0;
+      color: var(--secondary-color);
+    }
+    .plan-features {
+      text-align: left;
+      margin-top: 15px;
+      font-size: 0.9rem;
+    }
+    .plan-features li {
+      margin-bottom: 8px;
+      position: relative;
+      padding-left: 20px;
+    }
+    .plan-features li:before {
+      content: "✓";
+      color: var(--accent-color);
+      position: absolute;
+      left: 0;
     }
     .highlight {
       color: var(--highlight-color);
@@ -297,7 +326,7 @@
 </head>
 <body>
   <div class="running-banner">
-    <div class="running-text">🙏🏿 JK VIP VPN 🙏🏿 📢 VIP 1Month 50 ,2Months 100,3Months 120 အချိန်တိုးစရာမလိုပါ တလအကြိုက်သုံး။</div>
+    <div class="running-text">🙏🏿 JK VIP VPN 🙏🏿 📢 VIP 1Month 50 THB, 3Months 120 THB, 6Months 200 THB - Unlimited GB - No Ads - Good For All Networks</div>
   </div>
 
   <div class="lang-switcher">
@@ -315,8 +344,33 @@
   <div class="plans">
     <h2>🔥 VIP PLANS</h2>
     <div class="plan-list">
-      <div class="plan-card">VIP 1 Month <br> <span class="highlight">50 THB</span></div>
-      <div class="plan-card">VIP 2 Months <br> <span class="highlight">100 THB</span></div>
+      <div class="plan-card">
+        <div class="plan-title">VIP PLAN 1 Month</div>
+        <div class="plan-price">50 THB</div>
+        <ul class="plan-features">
+          <li>Unlimited GB</li>
+          <li>No Ads</li>
+          <li>Good For All Networks</li>
+        </ul>
+      </div>
+      <div class="plan-card">
+        <div class="plan-title">VIP PLAN 3 Months</div>
+        <div class="plan-price">120 THB</div>
+        <ul class="plan-features">
+          <li>Unlimited GB</li>
+          <li>No Ads</li>
+          <li>Good For All Networks</li>
+        </ul>
+      </div>
+      <div class="plan-card">
+        <div class="plan-title">VIP PLAN 6 Months</div>
+        <div class="plan-price">200 THB</div>
+        <ul class="plan-features">
+          <li>Unlimited GB</li>
+          <li>No Ads</li>
+          <li>Good For All Networks</li>
+        </ul>
+      </div>
     </div>
     <div class="images">
       <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/v1.png" alt="VIP Image 1" />
@@ -400,6 +454,19 @@
         const newText = el.getAttribute(`data-lang-${lang}`);
         if (newText) el.textContent = newText;
       });
+      
+      // Update running text based on language
+      const runningText = document.querySelector('.running-text');
+      if (runningText) {
+        if (lang === 'mm') {
+          runningText.textContent = "🙏🏿 JK VIP VPN 🙏🏿 📢 VIP ၁လ 50 THB, ၃လ 120 THB, ၆လ 200 THB - Unlimited GB - No Ads - Good For All Networks";
+        } else if (lang === 'th') {
+          runningText.textContent = "🙏🏿 JK VIP VPN 🙏🏿 📢 VIP 1 เดือน 50 THB, 3 เดือน 120 THB, 6 เดือน 200 THB - Unlimited GB - No Ads - Good For All Networks";
+        } else {
+          runningText.textContent = "🙏🏿 JK VIP VPN 🙏🏿 📢 VIP 1Month 50 THB, 3Months 120 THB, 6Months 200 THB - Unlimited GB - No Ads - Good For All Networks";
+        }
+      }
+      
       localStorage.setItem("lang", lang);
     }
 
