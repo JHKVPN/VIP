@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>JK VPN VIP Fast & Security</title>
-  <meta name="theme-color" content="#1e1e1e" media="(prefers-color-scheme: dark)">
-  <meta name="theme-color" content="#f5f7fa" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a237e">
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3271/3271369.png" type="image/png">
   <style>
     :root {
@@ -14,36 +13,17 @@
       --card-bg: #fff;
       --plan-bg: #e3f2fd;
       --led-color: #00FF00;
-    }
-    body.dark {
-      --bg-color: #1e1e1e;
-      --text-color: #fff;
-      --card-bg: #2c2c2c;
-      --plan-bg: #263238;
-      --led-color: #00FF00;
+      --primary-color: #1a237e;
+      --secondary-color: #0d47a1;
+      --accent-color: #00BFFF;
     }
     body {
       font-family: Arial, sans-serif;
-      background: var(--bg-color);
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
       color: var(--text-color);
       margin: 0;
       padding: 80px 20px 20px;
-      transition: background 0.3s, color 0.3s;
       overflow-x: hidden;
-    }
-    .theme-toggle {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      background: #000;
-      color: #0f0;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      z-index: 999;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     }
     .lang-switcher {
       text-align: center;
@@ -56,12 +36,17 @@
       border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
-      background-color: #0d47a1;
+      background-color: var(--primary-color);
       color: #fff;
+      transition: all 0.3s ease;
+    }
+    .lang-btn:hover {
+      background-color: var(--secondary-color);
+      transform: translateY(-2px);
     }
     .running-banner {
-      background: black;
-      color: lime;
+      background: var(--primary-color);
+      color: #fff;
       padding: 10px;
       white-space: nowrap;
       overflow: hidden;
@@ -73,6 +58,7 @@
       font-weight: bold;
       z-index: 998;
       font-size: 18px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     }
     .running-text {
       display: inline-block;
@@ -87,22 +73,15 @@
       text-align: center;
       font-size: 28px;
       font-weight: bold;
-      background-color: #000;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
       padding: 15px 10px;
       margin: 20px auto;
       border-radius: 12px;
       letter-spacing: 1px;
-      animation: color-shift 3s infinite linear;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
       max-width: 800px;
-      color: #00ff00;
-    }
-    @keyframes color-shift {
-      0%   { color: #ffff00; }
-      20%  { color: #00ff00; }
-      40%  { color: #ff0000; }
-      60%  { color: #0000ff; }
-      80%  { color: #ff00ff; }
-      100% { color: #ffff00; }
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
     .lottie-container {
       width: 100%;
@@ -112,6 +91,15 @@
     }
     h1, h2 {
       text-align: center;
+      color: var(--primary-color);
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 0;
     }
     .plans, .codes, .contact, .video-section {
       max-width: 800px;
@@ -119,8 +107,11 @@
       background: var(--card-bg);
       padding: 20px;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      transition: background 0.3s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .plans:hover, .codes:hover, .contact:hover, .video-section:hover {
+      transform: translateY(-5px);
     }
     .plan-list {
       display: flex;
@@ -134,12 +125,18 @@
     }
     .plan-card {
       flex: 1;
-      background: var(--plan-bg);
-      padding: 15px;
+      background: linear-gradient(135deg, var(--plan-bg) 0%, #bbdefb 100%);
+      padding: 20px;
       border-radius: 10px;
       text-align: center;
       font-weight: bold;
-      color: #0d47a1;
+      color: var(--primary-color);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .plan-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
     .download {
       text-align: center;
@@ -147,17 +144,19 @@
     }
     .download a {
       display: inline-block;
-      background-color: #0d47a1;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
       color: white;
-      padding: 12px 24px;
+      padding: 15px 30px;
       border-radius: 30px;
       text-decoration: none;
       font-weight: bold;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      font-size: 1.1rem;
     }
     .download a:hover {
-      background-color: #1565c0;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
     }
     .images {
       display: flex;
@@ -174,23 +173,38 @@
     .images img {
       width: 100%;
       border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+    .images img:hover {
+      transform: scale(1.02);
     }
     ul {
       list-style: none;
       padding: 0;
     }
     ul li {
-      padding: 8px 0;
+      padding: 12px 0;
       font-size: 16px;
-      border-bottom: 1px solid #ddd;
+      border-bottom: 1px solid #eee;
+      transition: all 0.3s ease;
+    }
+    ul li:hover {
+      background-color: #f5f9ff;
+      padding-left: 10px;
+    }
+    ul li strong {
+      color: var(--primary-color);
     }
     .contact div {
-      margin-top: 10px;
+      margin-top: 15px;
       font-size: 16px;
+      padding: 10px;
+      border-radius: 8px;
+      background-color: #f5f9ff;
     }
     .highlight {
-      color: green;
+      color: var(--primary-color);
       font-weight: bold;
     }
     .video-wrapper {
@@ -199,7 +213,7 @@
       height: 0;
       overflow: hidden;
       border-radius: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     }
     .video-wrapper iframe {
       position: absolute;
@@ -216,9 +230,13 @@
       margin-right: 15px;
       margin-top: 10px;
       text-decoration: none;
-      color: var(--text-color);
+      color: white;
       font-weight: bold;
-      transition: transform 0.2s;
+      transition: all 0.3s ease;
+      padding: 10px 15px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
     .social-link img {
       width: 28px;
@@ -226,20 +244,32 @@
       margin-right: 8px;
     }
     .social-link:hover {
-      transform: scale(1.05);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     }
     .copy-btn {
       margin-left: 10px;
-      padding: 3px 8px;
+      padding: 5px 10px;
       font-size: 12px;
-      background-color: #00BFFF;
+      background-color: var(--accent-color);
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
     .copy-btn:hover {
       background-color: #009acd;
+      transform: translateY(-2px);
+    }
+    .qr-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .qr-container img {
+      border: 2px solid #eee;
+      padding: 10px;
+      background: white;
     }
   </style>
 </head>
@@ -247,8 +277,6 @@
   <div class="running-banner">
     <div class="running-text">🙏🏿 JK VIP VPN 🙏🏿 📢 VIP 1Month 50 ,2Months 100,3Months 120 အချိန်တိုးစရာမလိုပါ တလအကြိုက်သုံး။</div>
   </div>
-
-  <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
 
   <div class="lang-switcher">
     <button class="lang-btn" onclick="setLang('en')">🇺🇸 EN</button>
@@ -314,12 +342,12 @@
       <span class="highlight">BNB / USDT accepted</span>
       <button class="copy-btn" onclick="copyText('binance')">📋 Copy</button>
     </div>
-    <div style="margin: 15px 0;">
+    <div class="qr-container">
       <strong>PromptPay QR:</strong><br>
       <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/pp.png" alt="PromptPay QR"
-        style="width: 200px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);" />
+        style="width: 200px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.2);" />
     </div>
-    <div style="margin-top: 15px;">
+    <div style="margin-top: 15px; text-align: center;">
       <a href="https://m.me/juehtet2025" target="_blank" class="social-link">
         <img src="https://cdn-icons-png.flaticon.com/512/2111/2111342.png" alt="Messenger" />
         Messenger Chat
@@ -341,11 +369,6 @@
       path: 'https://assets10.lottiefiles.com/packages/lf20_3rwasyjy.json'
     });
 
-    function toggleTheme() {
-      document.body.classList.toggle("dark");
-      localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
-    }
-
     function copyText(elementId) {
       const text = document.getElementById(elementId).textContent.trim();
       navigator.clipboard.writeText(text).then(() => alert("Copied: " + text));
@@ -360,11 +383,6 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
-      const savedTheme = localStorage.getItem("theme");
-      if (savedTheme === "dark") {
-        document.body.classList.add("dark");
-      }
-
       const savedLang = localStorage.getItem("lang") || "en";
       setLang(savedLang);
     });
