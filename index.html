@@ -322,6 +322,23 @@
       border-radius: 12px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
     }
+    .order-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--highlight-color) 0%, #FFA500 100%);
+      color: #000;
+      padding: 10px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 15px;
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+      transition: all 0.3s ease;
+      border: 2px solid var(--accent-color);
+    }
+    .order-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 215, 0, 0.6);
+    }
   </style>
 </head>
 <body>
@@ -335,41 +352,44 @@
     <button class="lang-btn" onclick="setLang('th')">🇹🇭 TH</button>
   </div>
 
-  <div class="led-text">🙏🏿 JK VIP VPN 🙏🏿</div>
+  <div class="led-text" data-lang-en="🙏🏿 JK VIP VPN 🙏🏿" data-lang-mm="🙏🏿 JK VIP VPN 🙏🏿" data-lang-th="🙏🏿 JK VPN ระดับพรีเมียม 🙏🏿">🙏🏿 JK VIP VPN 🙏🏿</div>
 
   <div class="lottie-container" id="lottie-rocket"></div>
 
-  <h1>VIP INTERNET PLANS</h1>
+  <h1 data-lang-en="VIP INTERNET PLANS" data-lang-mm="VIP အင်တာနက်ပလန်များ" data-lang-th="แพ็คเกจอินเทอร์เน็ตระดับพรีเมียม">VIP INTERNET PLANS</h1>
 
   <div class="plans">
-    <h2>🔥 VIP PLANS</h2>
+    <h2 data-lang-en="🔥 VIP PLANS" data-lang-mm="🔥 VIP ပလန်များ" data-lang-th="🔥 แพ็คเกจพรีเมียม">🔥 VIP PLANS</h2>
     <div class="plan-list">
       <div class="plan-card">
-        <div class="plan-title">VIP PLAN 1 Month</div>
+        <div class="plan-title" data-lang-en="VIP PLAN 1 Month" data-lang-mm="VIP ပလန် ၁လ" data-lang-th="แพ็คเกจพรีเมียม 1 เดือน">VIP PLAN 1 Month</div>
         <div class="plan-price">50 THB</div>
         <ul class="plan-features">
-          <li>Unlimited GB</li>
-          <li>No Ads</li>
-          <li>Good For All Networks</li>
+          <li data-lang-en="Unlimited GB" data-lang-mm="အကန့်အသတ်မရှိ GB" data-lang-th="ปริมาณข้อมูลไม่จำกัด">Unlimited GB</li>
+          <li data-lang-en="No Ads" data-lang-mm="ကြော်ငြာများမပါ" data-lang-th="ไม่มีโฆษณา">No Ads</li>
+          <li data-lang-en="Good For All Networks" data-lang-mm="နက်ဝပ်အားလုံးအတွက် အဆင်ပြေ" data-lang-th="ใช้งานได้ดีทุกเครือข่าย">Good For All Networks</li>
         </ul>
+        <a href="https://m.me/juehtet2025" class="order-btn" data-lang-en="Order Now" data-lang-mm="ယခုမှာယူရန်" data-lang-th="สั่งซื้อทันที">Order Now</a>
       </div>
       <div class="plan-card">
-        <div class="plan-title">VIP PLAN 3 Months</div>
+        <div class="plan-title" data-lang-en="VIP PLAN 3 Months" data-lang-mm="VIP ပလန် ၃လ" data-lang-th="แพ็คเกจพรีเมียม 3 เดือน">VIP PLAN 3 Months</div>
         <div class="plan-price">120 THB</div>
         <ul class="plan-features">
-          <li>Unlimited GB</li>
-          <li>No Ads</li>
-          <li>Good For All Networks</li>
+          <li data-lang-en="Unlimited GB" data-lang-mm="အကန့်အသတ်မရှိ GB" data-lang-th="ปริมาณข้อมูลไม่จำกัด">Unlimited GB</li>
+          <li data-lang-en="No Ads" data-lang-mm="ကြော်ငြာများမပါ" data-lang-th="ไม่มีโฆษณา">No Ads</li>
+          <li data-lang-en="Good For All Networks" data-lang-mm="နက်ဝပ်အားလုံးအတွက် အဆင်ပြေ" data-lang-th="ใช้งานได้ดีทุกเครือข่าย">Good For All Networks</li>
         </ul>
+        <a href="https://m.me/juehtet2025" class="order-btn" data-lang-en="Order Now" data-lang-mm="ယခုမှာယူရန်" data-lang-th="สั่งซื้อทันที">Order Now</a>
       </div>
       <div class="plan-card">
-        <div class="plan-title">VIP PLAN 6 Months</div>
+        <div class="plan-title" data-lang-en="VIP PLAN 6 Months" data-lang-mm="VIP ပလန် ၆လ" data-lang-th="แพ็คเกจพรีเมียม 6 เดือน">VIP PLAN 6 Months</div>
         <div class="plan-price">200 THB</div>
         <ul class="plan-features">
-          <li>Unlimited GB</li>
-          <li>No Ads</li>
-          <li>Good For All Networks</li>
+          <li data-lang-en="Unlimited GB" data-lang-mm="အကန့်အသတ်မရှိ GB" data-lang-th="ปริมาณข้อมูลไม่จำกัด">Unlimited GB</li>
+          <li data-lang-en="No Ads" data-lang-mm="ကြော်ငြာများမပါ" data-lang-th="ไม่มีโฆษณา">No Ads</li>
+          <li data-lang-en="Good For All Networks" data-lang-mm="နက်ဝပ်အားလုံးအတွက် အဆင်ပြေ" data-lang-th="ใช้งานได้ดีทุกเครือข่าย">Good For All Networks</li>
         </ul>
+        <a href="https://m.me/juehtet2025" class="order-btn" data-lang-en="Order Now" data-lang-mm="ယခုမှာယူရန်" data-lang-th="สั่งซื้อทันที">Order Now</a>
       </div>
     </div>
     <div class="images">
@@ -379,29 +399,29 @@
   </div>
 
   <div class="download">
-    <a href="https://github.com/JUEHTET1991/JKVIP/releases/download/V1.2.0/JK.VIP.VPN_1.2.0.apk" download>📥 DOWNLOAD APK</a>
+    <a href="https://github.com/JUEHTET1991/JKVIP/releases/download/V1.2.0/JK.VIP.VPN_1.2.0.apk" download data-lang-en="📥 DOWNLOAD APK" data-lang-mm="📥 APK ဒေါင်းလုဒ်ရယူရန်" data-lang-th="📥 ดาวน์โหลด APK">📥 DOWNLOAD APK</a>
   </div>
 
   <div class="codes">
-    <h2>📲 VIP သုံးရန် Plan စမတ်ကုဒ်များ</h2>
+    <h2 data-lang-en="📲 VIP Plan Smart Codes" data-lang-mm="📲 VIP သုံးရန် Plan စမတ်ကုဒ်များ" data-lang-th="📲 รหัสสมาร์ทสำหรับแพ็คเกจพรีเมียม">📲 VIP သုံးရန် Plan စမတ်ကုဒ်များ</h2>
     <ul>
-      <li>DTAC Jaidee <strong>*117*30#</strong> (30 THB)</li>
-      <li>TRUE Jaidee <strong>*900*8131#</strong> (31.50 THB)</li>
-      <li>DTAC Gaming Plan ( DTAC APP )</li>
-      <li>True Viber Plan <strong>*900*3809#</strong> (53 THB)</li>
-      <li>True VDO Plan <strong>*900*1347#</strong> (54 THB)</li>
+      <li data-lang-en="DTAC Jaidee *117*30# (30 THB)" data-lang-mm="DTAC Jaidee *117*30# (30 THB)" data-lang-th="ดีแทค Jaidee *117*30# (30 บาท)">DTAC Jaidee <strong>*117*30#</strong> (30 THB)</li>
+      <li data-lang-en="TRUE Jaidee *900*8131# (31.50 THB)" data-lang-mm="TRUE Jaidee *900*8131# (31.50 THB)" data-lang-th="ทรู Jaidee *900*8131# (31.50 บาท)">TRUE Jaidee <strong>*900*8131#</strong> (31.50 THB)</li>
+      <li data-lang-en="DTAC Gaming Plan (DTAC APP)" data-lang-mm="DTAC Gaming Plan (DTAC APP)" data-lang-th="ดีแทค แพ็คเกจเกมมิ่ง (แอปดีแทค)">DTAC Gaming Plan ( DTAC APP )</li>
+      <li data-lang-en="True Viber Plan *900*3809# (53 THB)" data-lang-mm="True Viber Plan *900*3809# (53 THB)" data-lang-th="ทรู ไวเบอร์ แพ็คเกจ *900*3809# (53 บาท)">True Viber Plan <strong>*900*3809#</strong> (53 THB)</li>
+      <li data-lang-en="True VDO Plan *900*1347# (54 THB)" data-lang-mm="True VDO Plan *900*1347# (54 THB)" data-lang-th="ทรู VDO แพ็คเกจ *900*1347# (54 บาท)">True VDO Plan <strong>*900*1347#</strong> (54 THB)</li>
     </ul>
   </div>
 
   <div class="video-section">
-    <h2>🎥 VIP မန်ဘာ၀င်နည်းကြည့်ရန်</h2>
+    <h2 data-lang-en="🎥 How to Become a VIP Member" data-lang-mm="🎥 VIP မန်ဘာ၀င်နည်းကြည့်ရန်" data-lang-th="🎥 วิธีการสมัครสมาชิกพรีเมียม">🎥 VIP မန်ဘာ၀င်နည်းကြည့်ရန်</h2>
     <div class="video-wrapper">
       <iframe src="https://www.youtube.com/embed/NP93NkFTmWo" title="Membership Tutorial" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 
   <div class="contact">
-    <h2>📞 Adminအကောင့်နှင့် ဘဏ်များ</h2>
+    <h2 data-lang-en="📞 Admin Accounts & Banks" data-lang-mm="📞 Adminအကောင့်နှင့် ဘဏ်များ" data-lang-th="📞 บัญชีแอดมินและธนาคาร">📞 Adminအကောင့်နှင့် ဘဏ်များ</h2>
     <div>
       <span data-lang-en="Kasikorn Bank (KBank):" data-lang-mm="ကေဆီကွန် ဘဏ်:" data-lang-th="ธนาคารกสิกร:">Kasikorn Bank (KBank):</span>
       <strong id="kbank">181-8-20638-7</strong> (Mr. Khin Naing Lin)
@@ -415,21 +435,21 @@
     <div>
       <span data-lang-en="Binance ID:" data-lang-mm="Binance ID:" data-lang-th="บัญชี Binance:">Binance ID:</span>
       <strong id="binance">219766442</strong>
-      <span class="highlight">BNB / USDT accepted</span>
+      <span class="highlight" data-lang-en="BNB / USDT accepted" data-lang-mm="BNB / USDT လက်ခံသည်" data-lang-th="รับ BNB / USDT">BNB / USDT accepted</span>
       <button class="copy-btn" onclick="copyText('binance')">📋 Copy</button>
     </div>
     <div class="qr-container">
-      <strong>PromptPay QR:</strong><br>
+      <strong data-lang-en="PromptPay QR:" data-lang-mm="PromptPay QR:" data-lang-th="PromptPay QR:">PromptPay QR:</strong><br>
       <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/pp.png" alt="PromptPay QR" style="width: 220px;" />
     </div>
     <div style="margin-top: 20px; text-align: center;">
       <a href="https://m.me/juehtet2025" target="_blank" class="social-link">
         <img src="https://cdn-icons-png.flaticon.com/512/2111/2111342.png" alt="Messenger" />
-        Messenger Chat
+        <span data-lang-en="Messenger Chat" data-lang-mm="Messenger စာတို" data-lang-th="แชท Messenger">Messenger Chat</span>
       </a>
       <a href="https://t.me/jk_vipvpn_bot" target="_blank" class="social-link">
         <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" />
-        Telegram Chat
+        <span data-lang-en="Telegram Chat" data-lang-mm="Telegram စာတို" data-lang-th="แชท Telegram">Telegram Chat</span>
       </a>
     </div>
   </div>
@@ -446,7 +466,13 @@
 
     function copyText(elementId) {
       const text = document.getElementById(elementId).textContent.trim();
-      navigator.clipboard.writeText(text).then(() => alert("Copied: " + text));
+      navigator.clipboard.writeText(text).then(() => {
+        const lang = localStorage.getItem("lang") || "en";
+        let message = "Copied: " + text;
+        if (lang === 'mm') message = "ကူးယူပြီး: " + text;
+        if (lang === 'th') message = "คัดลอกแล้ว: " + text;
+        alert(message);
+      });
     }
 
     function setLang(lang) {
@@ -461,7 +487,7 @@
         if (lang === 'mm') {
           runningText.textContent = "🙏🏿 JK VIP VPN 🙏🏿 📢 VIP ၁လ 50 THB, ၃လ 120 THB, ၆လ 200 THB - Unlimited GB - No Ads - Good For All Networks";
         } else if (lang === 'th') {
-          runningText.textContent = "🙏🏿 JK VIP VPN 🙏🏿 📢 VIP 1 เดือน 50 THB, 3 เดือน 120 THB, 6 เดือน 200 THB - Unlimited GB - No Ads - Good For All Networks";
+          runningText.textContent = "🙏🏿 JK VPN ระดับพรีเมียม 🙏🏿 📢 พรีเมียม 1 เดือน 50 บาท, 3 เดือน 120 บาท, 6 เดือน 200 บาท - ข้อมูลไม่จำกัด - ไม่มีโฆษณา - ใช้งานได้ดีทุกเครือข่าย";
         } else {
           runningText.textContent = "🙏🏿 JK VIP VPN 🙏🏿 📢 VIP 1Month 50 THB, 3Months 120 THB, 6Months 200 THB - Unlimited GB - No Ads - Good For All Networks";
         }
