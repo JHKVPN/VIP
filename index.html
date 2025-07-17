@@ -16,6 +16,9 @@
       --secondary-color: #FF1493; /* Pink */
       --accent-color: #00FFFF; /* Cyan */
       --highlight-color: #FFD700; /* Gold */
+      --online-color: #4CAF50; /* Green */
+      --maintenance-color: #FF9800; /* Orange */
+      --offline-color: #F44336; /* Red */
     }
     body {
       font-family: 'Arial', sans-serif;
@@ -356,8 +359,8 @@
     
     /* Server Monitor Styles */
     .server-monitor {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 15px;
       margin-top: 20px;
     }
@@ -366,16 +369,35 @@
       background: var(--card-bg);
       padding: 15px;
       border-radius: 10px;
-      border-left: 5px solid #4CAF50;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
     }
     
-    .server-card.maintenance {
-      border-left-color: #FF9800;
+    .server-card:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background: var(--online-color);
     }
     
-    .server-card.offline {
-      border-left-color: #F44336;
+    .server-card.maintenance:after {
+      background: var(--maintenance-color);
+    }
+    
+    .server-card.offline:after {
+      background: var(--offline-color);
+    }
+    
+    .server-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
     }
     
     .server-name {
@@ -385,27 +407,105 @@
     }
     
     .server-status {
-      margin: 5px 0;
+      font-size: 0.8rem;
+      padding: 3px 8px;
+      border-radius: 12px;
+      background: rgba(76, 175, 80, 0.2);
+      color: var(--online-color);
+    }
+    
+    .server-card.maintenance .server-status {
+      background: rgba(255, 152, 0, 0.2);
+      color: var(--maintenance-color);
+    }
+    
+    .server-card.offline .server-status {
+      background: rgba(244, 67, 54, 0.2);
+      color: var(--offline-color);
+    }
+    
+    .server-details {
+      margin-top: 10px;
       font-size: 0.9rem;
     }
     
-    .server-load {
-      margin-top: 10px;
-    }
-    
-    .load-bar {
-      height: 8px;
-      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-      border-radius: 4px;
+    .server-detail {
+      display: flex;
+      justify-content: space-between;
       margin-bottom: 5px;
     }
     
-    .server-card.maintenance .load-bar {
-      background: #FF9800;
+    .server-stats {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+      flex-wrap: wrap;
+      gap: 15px;
     }
     
-    .server-card.offline .load-bar {
-      background: #F44336;
+    .stat-card {
+      background: var(--plan-bg);
+      padding: 15px 20px;
+      border-radius: 10px;
+      text-align: center;
+      min-width: 120px;
+    }
+    
+    .stat-value {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--accent-color);
+      margin-bottom: 5px;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+    
+    .server-loading {
+      text-align: center;
+      padding: 30px;
+      grid-column: 1 / -1;
+    }
+    
+    .loading-spinner {
+      border: 4px solid rgba(138, 43, 226, 0.2);
+      border-radius: 50%;
+      border-top: 4px solid var(--primary-color);
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 15px;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .last-updated {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+    
+    .refresh-btn {
+      display: block;
+      margin: 15px auto 0;
+      padding: 8px 15px;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .refresh-btn:hover {
+      background: var(--secondary-color);
+      transform: translateY(-2px);
     }
   </style>
 </head>
@@ -466,47 +566,38 @@
     </div>
   </div>
 
-  <!-- Server Monitor Section -->
+  <!-- Live Server Monitor Section -->
   <div class="server-monitor-section">
-    <h2 data-lang-en="🖥️ SERVER STATUS" data-lang-mm="🖥️ ဆာဗာအခြေအနေ" data-lang-th="🖥️ สถานะเซิร์ฟเวอร์">🖥️ SERVER STATUS</h2>
+    <h2 data-lang-en="🖥️ LIVE SERVER STATUS" data-lang-mm="🖥️ ဆာဗာအခြေအနေ အချိန်နှင့်တစ်ပြေးညီ" data-lang-th="🖥️ สถานะเซิร์ฟเวอร์แบบเรียลไทม์">🖥️ LIVE SERVER STATUS</h2>
     
-    <div class="server-monitor">
-      <div class="server-card online">
-        <div class="server-name">Singapore #1</div>
-        <div class="server-status">Online</div>
-        <div class="server-load">
-          <div class="load-bar" style="width: 30%"></div>
-          <span>30% Load</span>
-        </div>
+    <div class="server-stats">
+      <div class="stat-card">
+        <div class="stat-value" id="total-servers">0</div>
+        <div class="stat-label" data-lang-en="Total Servers" data-lang-mm="ဆာဗာစုစုပေါင်း" data-lang-th="เซิร์ฟเวอร์ทั้งหมด">Total Servers</div>
       </div>
-      
-      <div class="server-card online">
-        <div class="server-name">Japan #1</div>
-        <div class="server-status">Online</div>
-        <div class="server-load">
-          <div class="load-bar" style="width: 45%"></div>
-          <span>45% Load</span>
-        </div>
+      <div class="stat-card">
+        <div class="stat-value" id="online-servers">0</div>
+        <div class="stat-label" data-lang-en="Online" data-lang-mm="အလုပ်လုပ်နေသည်" data-lang-th="ออนไลน์">Online</div>
       </div>
-      
-      <div class="server-card online">
-        <div class="server-name">USA #1</div>
-        <div class="server-status">Online</div>
-        <div class="server-load">
-          <div class="load-bar" style="width: 65%"></div>
-          <span>65% Load</span>
-        </div>
+      <div class="stat-card">
+        <div class="stat-value" id="offline-servers">0</div>
+        <div class="stat-label" data-lang-en="Offline" data-lang-mm="အလုပ်မလုပ်ပါ" data-lang-th="ออฟไลน์">Offline</div>
       </div>
-      
-      <div class="server-card maintenance">
-        <div class="server-name">Thailand #1</div>
-        <div class="server-status">Maintenance</div>
-        <div class="server-load">
-          <div class="load-bar" style="width: 0%"></div>
-          <span>0% Load</span>
-        </div>
+      <div class="stat-card">
+        <div class="stat-value" id="avg-latency">0ms</div>
+        <div class="stat-label" data-lang-en="Avg Latency" data-lang-mm="ပျမ်းမျှအချိန်နှောင့်နှေး" data-lang-th="ความหน่วงเฉลี่ย">Avg Latency</div>
       </div>
     </div>
+    
+    <div class="server-monitor" id="server-monitor">
+      <div class="server-loading">
+        <div class="loading-spinner"></div>
+        <span data-lang-en="Loading server status..." data-lang-mm="ဆာဗာအခြေအနေများကိုရယူနေသည်..." data-lang-th="กำลังโหลดสถานะเซิร์ฟเวอร์...">Loading server status...</span>
+      </div>
+    </div>
+    
+    <div class="last-updated" id="last-updated"></div>
+    <button class="refresh-btn" onclick="updateServerStatus()" data-lang-en="🔄 Refresh Status" data-lang-mm="🔄 အခြေအနေပြန်လည်ရယူရန်" data-lang-th="🔄 รีเฟรชสถานะ">🔄 Refresh Status</button>
   </div>
 
   <div class="download">
@@ -607,9 +698,128 @@
       localStorage.setItem("lang", lang);
     }
 
+    // Server monitoring function
+    function updateServerStatus() {
+      // Show loading state
+      const serverMonitor = document.getElementById('server-monitor');
+      serverMonitor.innerHTML = `
+        <div class="server-loading">
+          <div class="loading-spinner"></div>
+          <span data-lang-en="Loading server status..." data-lang-mm="ဆာဗာအခြေအနေများကိုရယူနေသည်..." data-lang-th="กำลังโหลดสถานะเซิร์ฟเวอร์...">Loading server status...</span>
+        </div>
+      `;
+      
+      // In a real implementation, you would fetch this from your API
+      // Simulate API call with timeout
+      setTimeout(() => {
+        // Mock server data - replace with real API call in production
+        const mockServers = [
+          { id: 1, name: "Singapore #1", status: "online", load: getRandomLoad(), latency: getRandomLatency(), users: getRandomUsers(200) },
+          { id: 2, name: "Japan #1", status: "online", load: getRandomLoad(), latency: getRandomLatency(), users: getRandomUsers(300) },
+          { id: 3, name: "USA #1", status: "online", load: getRandomLoad(), latency: getRandomLatency(), users: getRandomUsers(250) },
+          { id: 4, name: "Thailand #1", status: Math.random() > 0.8 ? "maintenance" : "online", load: getRandomLoad(), latency: getRandomLatency(), users: getRandomUsers(200) },
+          { id: 5, name: "Germany #1", status: "online", load: getRandomLoad(), latency: getRandomLatency(), users: getRandomUsers(200) },
+          { id: 6, name: "UK #1", status: Math.random() > 0.9 ? "offline" : "online", load: getRandomLoad(), latency: getRandomLatency(), users: getRandomUsers(200) }
+        ];
+
+        renderServerStatus(mockServers);
+      }, 1000); // Simulate network delay
+    }
+
+    function renderServerStatus(servers) {
+      const serverMonitor = document.getElementById('server-monitor');
+      serverMonitor.innerHTML = '';
+      
+      let onlineCount = 0;
+      let offlineCount = 0;
+      let totalLatency = 0;
+      let latencyCount = 0;
+      
+      servers.forEach(server => {
+        const serverCard = document.createElement('div');
+        serverCard.className = `server-card ${server.status}`;
+        
+        const statusText = server.status === 'online' ? 'Online' : 
+                          server.status === 'maintenance' ? 'Maintenance' : 'Offline';
+        
+        serverCard.innerHTML = `
+          <div class="server-header">
+            <div class="server-name">${server.name}</div>
+            <div class="server-status">${statusText}</div>
+          </div>
+          <div class="server-details">
+            <div class="server-detail">
+              <span data-lang-en="Load:" data-lang-mm="ဝန်ပိ:" data-lang-th="โหลด:">Load:</span>
+              <span>${server.status === 'offline' ? '0' : server.load}%</span>
+            </div>
+            <div class="server-detail">
+              <span data-lang-en="Latency:" data-lang-mm="အချိန်နှောင့်နှေး:" data-lang-th="ความหน่วง:">Latency:</span>
+              <span>${server.status === 'offline' ? '-' : server.latency}ms</span>
+            </div>
+            <div class="server-detail">
+              <span data-lang-en="Users:" data-lang-mm="အသုံးပြုသူ:" data-lang-th="ผู้ใช้:">Users:</span>
+              <span>${server.status === 'offline' ? '0' : server.users}/${server.status === 'offline' ? '0' : server.users * 2}</span>
+            </div>
+          </div>
+        `;
+        
+        serverMonitor.appendChild(serverCard);
+        
+        if (server.status === 'online') {
+          onlineCount++;
+          totalLatency += server.latency;
+          latencyCount++;
+        } else if (server.status === 'offline') {
+          offlineCount++;
+        }
+      });
+      
+      // Update stats
+      document.getElementById('total-servers').textContent = servers.length;
+      document.getElementById('online-servers').textContent = onlineCount;
+      document.getElementById('offline-servers').textContent = offlineCount;
+      document.getElementById('avg-latency').textContent = latencyCount > 0 
+        ? Math.round(totalLatency / latencyCount) + 'ms' 
+        : '0ms';
+      
+      // Update last updated time
+      const now = new Date();
+      const lang = localStorage.getItem("lang") || "en";
+      let timeString = now.toLocaleTimeString();
+      let updatedText = `Last updated: ${timeString}`;
+      
+      if (lang === 'mm') {
+        updatedText = `နောက်ဆုံးအချိန်: ${timeString}`;
+      } else if (lang === 'th') {
+        updatedText = `อัปเดตล่าสุด: ${timeString}`;
+      }
+      
+      document.getElementById('last-updated').textContent = updatedText;
+    }
+
+    // Helper functions for mock data
+    function getRandomLoad() {
+      return Math.floor(Math.random() * 30) + 20; // 20-50%
+    }
+    
+    function getRandomLatency() {
+      return Math.floor(Math.random() * 100) + 30; // 30-130ms
+    }
+    
+    function getRandomUsers(max) {
+      return Math.floor(Math.random() * max * 0.7) + Math.floor(max * 0.3); // 30-100% of max
+    }
+
+    // Initialize page
     window.addEventListener('DOMContentLoaded', () => {
       const savedLang = localStorage.getItem("lang") || "en";
       setLang(savedLang);
+      
+      // Load server status initially
+      updateServerStatus();
+      
+      // Update server status every 60 seconds
+      setInterval(updateServerStatus, 60000);
     });
   </script>
 </body>
