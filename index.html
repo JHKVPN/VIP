@@ -614,7 +614,7 @@
       border-radius: 4px;
     }
     
-    /* Digital Clock Section */
+    /* Digital Clock Section - Updated with Animation */
     .digital-clock-section {
       text-align: center;
       margin: 20px auto;
@@ -634,20 +634,51 @@
     
     .digital-clock {
       font-family: 'Courier New', monospace;
-      font-size: 2.5rem;
+      font-size: 3.5rem; /* Increased from 2.5rem */
       font-weight: bold;
-      color: var(--highlight-color);
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
-      padding: 10px 20px;
-      border-radius: 10px;
+      padding: 15px 25px; /* Increased padding */
+      border-radius: 15px;
       background: rgba(0, 0, 0, 0.2);
       display: inline-block;
+      animation: clockColorChange 5s infinite alternate;
+      text-shadow: 0 0 15px currentColor;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5) inset;
+    }
+    
+    @keyframes clockColorChange {
+      0% { color: #FF1493; } /* Pink */
+      20% { color: #8A2BE2; } /* Purple */
+      40% { color: #00FFFF; } /* Cyan */
+      60% { color: #FFD700; } /* Gold */
+      80% { color: #4CAF50; } /* Green */
+      100% { color: #FF9800; } /* Orange */
     }
     
     .digital-clock-label {
       font-size: 1rem;
       margin-top: 5px;
       opacity: 0.8;
+    }
+    
+    /* Digit animation */
+    .digit {
+      display: inline-block;
+      animation: digitPulse 1s infinite alternate;
+    }
+    
+    @keyframes digitPulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+    
+    .colon {
+      display: inline-block;
+      animation: colonBlink 1s infinite;
+    }
+    
+    @keyframes colonBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
     }
   </style>
 </head>
@@ -811,7 +842,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>
   <script>
-    // Initialize clocks
+    // Initialize clocks with digit animations
     function updateThailandClock() {
       const clockElement = document.getElementById('thailand-clock');
       const digitalClockElement = document.getElementById('digital-clock');
@@ -826,8 +857,20 @@
       const minutes = String(thailandTime.getMinutes()).padStart(2, '0');
       const seconds = String(thailandTime.getSeconds()).padStart(2, '0');
       
+      // Format with animated digits
+      const formattedTime = `
+        <span class="digit">${hours[0]}</span>
+        <span class="digit">${hours[1]}</span>
+        <span class="colon">:</span>
+        <span class="digit">${minutes[0]}</span>
+        <span class="digit">${minutes[1]}</span>
+        <span class="colon">:</span>
+        <span class="digit">${seconds[0]}</span>
+        <span class="digit">${seconds[1]}</span>
+      `;
+      
       clockElement.textContent = `${hours}:${minutes}:${seconds}`;
-      digitalClockElement.textContent = `${hours}:${minutes}:${seconds}`;
+      digitalClockElement.innerHTML = formattedTime;
     }
 
     // Update clocks every second
