@@ -114,7 +114,7 @@
       margin-top: 0;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     }
-    .plans, .codes, .contact, .video-section {
+    .plans, .codes, .contact, .video-section, .server-monitor-section {
       max-width: 800px;
       margin: 30px auto;
       background: var(--card-bg);
@@ -124,7 +124,7 @@
       transition: transform 0.3s ease;
       border: 1px solid rgba(138, 43, 226, 0.3);
     }
-    .plans:hover, .codes:hover, .contact:hover, .video-section:hover {
+    .plans:hover, .codes:hover, .contact:hover, .video-section:hover, .server-monitor-section:hover {
       transform: translateY(-5px);
       box-shadow: 0 12px 30px rgba(138, 43, 226, 0.4);
     }
@@ -353,6 +353,60 @@
       border: 2px solid var(--primary-color);
       margin-top: 20px;
     }
+    
+    /* Server Monitor Styles */
+    .server-monitor {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .server-card {
+      background: var(--card-bg);
+      padding: 15px;
+      border-radius: 10px;
+      border-left: 5px solid #4CAF50;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    
+    .server-card.maintenance {
+      border-left-color: #FF9800;
+    }
+    
+    .server-card.offline {
+      border-left-color: #F44336;
+    }
+    
+    .server-name {
+      font-weight: bold;
+      color: var(--accent-color);
+      font-size: 1.1rem;
+    }
+    
+    .server-status {
+      margin: 5px 0;
+      font-size: 0.9rem;
+    }
+    
+    .server-load {
+      margin-top: 10px;
+    }
+    
+    .load-bar {
+      height: 8px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      border-radius: 4px;
+      margin-bottom: 5px;
+    }
+    
+    .server-card.maintenance .load-bar {
+      background: #FF9800;
+    }
+    
+    .server-card.offline .load-bar {
+      background: #F44336;
+    }
   </style>
 </head>
 <body>
@@ -409,6 +463,49 @@
     <div class="images">
       <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/v1.png" alt="VIP Image 1" />
       <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/v2.png" alt="JK VIP VPN Server List" />
+    </div>
+  </div>
+
+  <!-- Server Monitor Section -->
+  <div class="server-monitor-section">
+    <h2 data-lang-en="🖥️ SERVER STATUS" data-lang-mm="🖥️ ဆာဗာအခြေအနေ" data-lang-th="🖥️ สถานะเซิร์ฟเวอร์">🖥️ SERVER STATUS</h2>
+    
+    <div class="server-monitor">
+      <div class="server-card online">
+        <div class="server-name">Singapore #1</div>
+        <div class="server-status">Online</div>
+        <div class="server-load">
+          <div class="load-bar" style="width: 30%"></div>
+          <span>30% Load</span>
+        </div>
+      </div>
+      
+      <div class="server-card online">
+        <div class="server-name">Japan #1</div>
+        <div class="server-status">Online</div>
+        <div class="server-load">
+          <div class="load-bar" style="width: 45%"></div>
+          <span>45% Load</span>
+        </div>
+      </div>
+      
+      <div class="server-card online">
+        <div class="server-name">USA #1</div>
+        <div class="server-status">Online</div>
+        <div class="server-load">
+          <div class="load-bar" style="width: 65%"></div>
+          <span>65% Load</span>
+        </div>
+      </div>
+      
+      <div class="server-card maintenance">
+        <div class="server-name">Thailand #1</div>
+        <div class="server-status">Maintenance</div>
+        <div class="server-load">
+          <div class="load-bar" style="width: 0%"></div>
+          <span>0% Load</span>
+        </div>
+      </div>
     </div>
   </div>
 
