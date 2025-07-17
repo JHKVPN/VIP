@@ -65,15 +65,39 @@
       font-size: 18px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     .running-text {
       display: inline-block;
       padding-left: 100%;
       animation: scroll 20s linear infinite;
+      flex: 1;
     }
     @keyframes scroll {
       from { transform: translateX(0); }
       to { transform: translateX(-100%); }
+    }
+    .clock-container {
+      display: flex;
+      align-items: center;
+      padding: 0 15px;
+      background: rgba(0, 0, 0, 0.3);
+      height: 100%;
+      border-radius: 0 0 0 15px;
+    }
+    .clock-label {
+      margin-right: 10px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+    .clock {
+      font-family: 'Courier New', monospace;
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--highlight-color);
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
     }
     .led-text {
       text-align: center;
@@ -570,6 +594,10 @@
 <body>
   <div class="running-banner">
     <div class="running-text">🙏🏿 JK VIP VPN 🙏🏿 📢 VIP 1Month 50 THB, 3Months 120 THB, 6Months 200 THB - Unlimited GB - No Ads - Good For All Networks</div>
+    <div class="clock-container">
+      <span class="clock-label">🇹🇭 ICT:</span>
+      <div class="clock" id="thailand-clock">00:00:00</div>
+    </div>
   </div>
 
   <div class="lang-switcher">
@@ -716,6 +744,23 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>
   <script>
+    // Initialize clock
+    function updateThailandClock() {
+      const now = new Date();
+      // Thailand is UTC+7
+      const thailandTime = new Date(now.getTime() + (7 * 60 * 60 * 1000));
+      
+      const hours = String(thailandTime.getUTCHours()).padStart(2, '0');
+      const minutes = String(thailandTime.getUTCMinutes()).padStart(2, '0');
+      const seconds = String(thailandTime.getUTCSeconds()).padStart(2, '0');
+      
+      document.getElementById('thailand-clock').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+    
+    // Update clock every second
+    setInterval(updateThailandClock, 1000);
+    updateThailandClock(); // Initialize immediately
+
     lottie.loadAnimation({
       container: document.getElementById('lottie-rocket'),
       renderer: 'svg',
