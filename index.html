@@ -27,6 +27,10 @@
       --text-color: #333333;
       --card-bg: #ffffff;
       --plan-bg: #e6f2ff;
+      --primary-color: #6a1b9a;
+      --secondary-color: #ad1457;
+      --accent-color: #00838f;
+      --highlight-color: #ff8f00;
     }
     
     body {
@@ -283,6 +287,9 @@
       border-radius: 8px;
       background: rgba(26, 26, 46, 0.7);
     }
+    [data-theme="light"] ul li {
+      background: rgba(230, 242, 255, 0.7);
+    }
     ul li:hover {
       background: rgba(138, 43, 226, 0.2);
       padding-left: 20px;
@@ -298,6 +305,9 @@
       border-radius: 10px;
       background: rgba(26, 26, 46, 0.7);
       border: 1px solid var(--primary-color);
+    }
+    [data-theme="light"] .contact div {
+      background: rgba(230, 242, 255, 0.7);
     }
     .video-wrapper {
       position: relative;
@@ -588,10 +598,14 @@
     /* Server capacity indicator */
     .capacity-bar {
       height: 8px;
-      background: rgba(255,255,255,0.2);
+      background: rgba(0,0,0,0.2);
       border-radius: 4px;
       margin-top: 5px;
       overflow: hidden;
+    }
+    
+    [data-theme="light"] .capacity-bar {
+      background: rgba(255,255,255,0.2);
     }
     
     .capacity-fill {
