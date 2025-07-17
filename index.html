@@ -20,14 +20,24 @@
       --maintenance-color: #FF9800; /* Orange */
       --offline-color: #F44336; /* Red */
     }
+    
+    /* Light mode colors */
+    [data-theme="light"] {
+      --bg-color: #f5f5f5;
+      --text-color: #333333;
+      --card-bg: #ffffff;
+      --plan-bg: #e6f2ff;
+    }
+    
     body {
       font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #0f0e17 0%, #1a1a2e 100%);
+      background: linear-gradient(135deg, var(--bg-color) 0%, var(--card-bg) 100%);
       color: var(--text-color);
       margin: 0;
-      padding: 80px 20px 20px;
+      padding: 60px 20px 20px;
       overflow-x: hidden;
       line-height: 1.6;
+      transition: background 0.5s ease, color 0.5s ease;
     }
     .lang-switcher {
       text-align: center;
@@ -66,7 +76,6 @@
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
       display: flex;
-      justify-content: space-between;
       align-items: center;
     }
     .running-text {
@@ -86,6 +95,7 @@
       background: rgba(0, 0, 0, 0.3);
       height: 100%;
       border-radius: 0 0 0 15px;
+      margin-left: 10px;
     }
     .clock-label {
       margin-right: 10px;
@@ -94,7 +104,7 @@
     }
     .clock {
       font-family: 'Courier New', monospace;
-      font-size: 20px;
+      font-size: 16px;
       font-weight: bold;
       color: var(--highlight-color);
       text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
@@ -764,6 +774,23 @@
     // Update clock every second
     setInterval(updateThailandClock, 1000);
     updateThailandClock(); // Initialize immediately
+
+    // Auto day/night mode switching
+    function updateTheme() {
+      const now = new Date();
+      const hours = now.getHours();
+      
+      // Day mode from 6 AM to 6 PM (6:00 - 18:00)
+      if (hours >= 6 && hours < 18) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+    }
+    
+    // Check theme every minute
+    updateTheme();
+    setInterval(updateTheme, 60000);
 
     lottie.loadAnimation({
       container: document.getElementById('lottie-rocket'),
