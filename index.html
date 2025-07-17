@@ -744,19 +744,23 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.10.2/lottie.min.js"></script>
   <script>
-    // Initialize clock
+    // Initialize clock - FIXED VERSION
     function updateThailandClock() {
+      const clockElement = document.getElementById('thailand-clock');
+      if (!clockElement) return;
+
+      // Get current time in Thailand (ICT = UTC+7)
       const now = new Date();
-      // Thailand is UTC+7
-      const thailandTime = new Date(now.getTime() + (7 * 60 * 60 * 1000));
+      const thailandOffset = 7 * 60; // 7 hours in minutes
+      const thailandTime = new Date(now.getTime() + (thailandOffset + now.getTimezoneOffset()) * 60000);
+
+      const hours = String(thailandTime.getHours()).padStart(2, '0');
+      const minutes = String(thailandTime.getMinutes()).padStart(2, '0');
+      const seconds = String(thailandTime.getSeconds()).padStart(2, '0');
       
-      const hours = String(thailandTime.getUTCHours()).padStart(2, '0');
-      const minutes = String(thailandTime.getUTCMinutes()).padStart(2, '0');
-      const seconds = String(thailandTime.getUTCSeconds()).padStart(2, '0');
-      
-      document.getElementById('thailand-clock').textContent = `${hours}:${minutes}:${seconds}`;
+      clockElement.textContent = `${hours}:${minutes}:${seconds}`;
     }
-    
+
     // Update clock every second
     setInterval(updateThailandClock, 1000);
     updateThailandClock(); // Initialize immediately
