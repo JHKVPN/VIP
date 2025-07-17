@@ -21,16 +21,19 @@
       --offline-color: #F44336; /* Red */
     }
     
-    /* Light mode colors */
+    /* Light mode colors - UPDATED FOR BETTER VISIBILITY */
     [data-theme="light"] {
       --bg-color: #f5f5f5;
       --text-color: #333333;
       --card-bg: #ffffff;
       --plan-bg: #e6f2ff;
-      --primary-color: #6a1b9a;
-      --secondary-color: #ad1457;
-      --accent-color: #00838f;
-      --highlight-color: #ff8f00;
+      --primary-color: #6a0dad; /* Darker purple */
+      --secondary-color: #c71585; /* Darker pink */
+      --accent-color: #008b8b; /* Darker cyan */
+      --highlight-color: #daa520; /* Darker gold */
+      --online-color: #2e7d32; /* Darker green */
+      --maintenance-color: #e65100; /* Darker orange */
+      --offline-color: #c62828; /* Darker red */
     }
     
     body {
@@ -101,6 +104,9 @@
       border-radius: 0 0 0 15px;
       margin-left: 10px;
     }
+    [data-theme="light"] .clock-container {
+      background: rgba(255, 255, 255, 0.3);
+    }
     .clock-label {
       margin-right: 10px;
       font-size: 14px;
@@ -129,11 +135,11 @@
       animation: colorChange 5s infinite alternate;
     }
     @keyframes colorChange {
-      0% { background: linear-gradient(135deg, #8A2BE2 0%, #FF1493 100%); }
-      25% { background: linear-gradient(135deg, #FF1493 0%, #00FFFF 100%); }
-      50% { background: linear-gradient(135deg, #00FFFF 0%, #FFD700 100%); }
-      75% { background: linear-gradient(135deg, #FFD700 0%, #8A2BE2 100%); }
-      100% { background: linear-gradient(135deg, #8A2BE2 0%, #00FFFF 100%); }
+      0% { background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); }
+      25% { background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 100%); }
+      50% { background: linear-gradient(135deg, var(--accent-color) 0%, var(--highlight-color) 100%); }
+      75% { background: linear-gradient(135deg, var(--highlight-color) 0%, var(--primary-color) 100%); }
+      100% { background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%); }
     }
     .lottie-container {
       width: 100%;
@@ -576,7 +582,7 @@
       100% { transform: scale(1); }
     }
     
-    /* Server Flag Indicators */
+    /* Server Flag Indicators - UPDATED FOR BETTER VISIBILITY IN LIGHT MODE */
     .flag {
       display: inline-block;
       width: 20px;
@@ -598,19 +604,15 @@
     /* Server capacity indicator */
     .capacity-bar {
       height: 8px;
-      background: rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.2);
       border-radius: 4px;
       margin-top: 5px;
       overflow: hidden;
     }
     
-    [data-theme="light"] .capacity-bar {
-      background: rgba(255,255,255,0.2);
-    }
-    
     .capacity-fill {
       height: 100%;
-      background: linear-gradient(90deg, #4CAF50, #FFD700, #F44336);
+      background: linear-gradient(90deg, var(--online-color), var(--highlight-color), var(--offline-color));
       border-radius: 4px;
     }
   </style>
@@ -861,10 +863,6 @@
       // Simulate API call with timeout
       setTimeout(() => {
         // Mock server data - replace with real API call in production
-        // CHANGES MADE: 
-        // 1. Changed Germany to India
-        // 2. Changed UK to Korea
-        // 3. Limited all servers to 100 users
         const mockServers = [
           { id: 1, name: "Singapore #1", country: "sg", status: "online", load: getRandomLoad(), latency: getRandomLatency(), users: getRandomUsers(100) },
           { id: 2, name: "Japan #1", country: "jp", status: "online", load: getRandomLoad(), latency: getRandomLatency(), users: getRandomUsers(100) },
