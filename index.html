@@ -451,6 +451,11 @@
       min-width: 120px;
     }
     
+    .stat-card.total-users {
+      background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+      color: white;
+    }
+    
     .stat-value {
       font-size: 1.8rem;
       font-weight: bold;
@@ -458,9 +463,18 @@
       margin-bottom: 5px;
     }
     
+    .stat-card.total-users .stat-value {
+      color: white;
+    }
+    
     .stat-label {
       font-size: 0.9rem;
       opacity: 0.8;
+    }
+    
+    .stat-card.total-users .stat-label {
+      color: white;
+      opacity: 0.9;
     }
     
     .server-loading {
@@ -506,6 +520,16 @@
     .refresh-btn:hover {
       background: var(--secondary-color);
       transform: translateY(-2px);
+    }
+    
+    .user-count-animation {
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
     }
   </style>
 </head>
@@ -583,9 +607,9 @@
         <div class="stat-value" id="offline-servers">0</div>
         <div class="stat-label" data-lang-en="Offline" data-lang-mm="အလုပ်မလုပ်ပါ" data-lang-th="ออฟไลน์">Offline</div>
       </div>
-      <div class="stat-card">
-        <div class="stat-value" id="avg-latency">0ms</div>
-        <div class="stat-label" data-lang-en="Avg Latency" data-lang-mm="ပျမ်းမျှအချိန်နှောင့်နှေး" data-lang-th="ความหน่วงเฉลี่ย">Avg Latency</div>
+      <div class="stat-card total-users">
+        <div class="stat-value user-count-animation" id="total-users">0</div>
+        <div class="stat-label" data-lang-en="Total Users" data-lang-mm="စုစုပေါင်းအသုံးပြုသူ" data-lang-th="ผู้ใช้ทั้งหมด">Total Users</div>
       </div>
     </div>
     
@@ -734,6 +758,7 @@
       let offlineCount = 0;
       let totalLatency = 0;
       let latencyCount = 0;
+      let totalUsers = 0;
       
       servers.forEach(server => {
         const serverCard = document.createElement('div');
@@ -769,6 +794,7 @@
           onlineCount++;
           totalLatency += server.latency;
           latencyCount++;
+          totalUsers += server.users;
         } else if (server.status === 'offline') {
           offlineCount++;
         }
@@ -778,6 +804,7 @@
       document.getElementById('total-servers').textContent = servers.length;
       document.getElementById('online-servers').textContent = onlineCount;
       document.getElementById('offline-servers').textContent = offlineCount;
+      document.getElementById('total-users').textContent = totalUsers;
       document.getElementById('avg-latency').textContent = latencyCount > 0 
         ? Math.round(totalLatency / latencyCount) + 'ms' 
         : '0ms';
