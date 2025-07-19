@@ -1252,7 +1252,7 @@
                     </div>
                     <div class="method-name">Binance</div>
                     <div class="qr-code">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=BINANCE_WALLET_ADDRESS" alt="Binance QR Code">
+                        <img src="https://raw.githubusercontent.com/JHKVPN/VIP/main/image/pp.png" alt="Binance QR Code">
                     </div>
                     <div class="account-info">219766442</div>
                     <button class="copy-btn" onclick="copyToClipboard('219766442')">
