@@ -837,19 +837,19 @@
 <body>
     <!-- Floating Social Buttons -->
     <div class="floating-social">
-        <a href="#" class="floating-btn telegram-btn">
+        <a href="https://t.me/jk_vipvpn_bot" class="floating-btn telegram-btn">
             <i class="fab fa-telegram"></i>
             <span class="floating-tooltip">Join Telegram Channel</span>
         </a>
-        <a href="#" class="floating-btn facebook-btn">
+        <a href="https://www.facebook.com/juehtet2025" class="floating-btn facebook-btn">
             <i class="fab fa-facebook-f"></i>
             <span class="floating-tooltip">Visit Facebook Page</span>
         </a>
-        <a href="https://m.me/jkvpn" class="floating-btn messenger-btn">
+        <a href="https://m.me/juehtet2025" class="floating-btn messenger-btn">
             <i class="fab fa-facebook-messenger"></i>
             <span class="floating-tooltip">Message Us on Messenger</span>
         </a>
-        <a href="#" class="floating-btn download-btn-floating">
+        <a href="https://github.com/JUEHTET1991/JKVIP/releases/download/V1.2.0/JK.VIP.VPN_1.2.0.apk" class="floating-btn download-btn-floating">
             <i class="fas fa-download"></i>
             <span class="floating-tooltip">Download APK</span>
         </a>
@@ -907,7 +907,7 @@
         <div class="download-apk">
             <h3>Download Our Latest App Version</h3>
             <p>Get the best VPN experience on your mobile device with our optimized application</p>
-            <a href="#" class="download-btn">
+            <a href="https://github.com/JUEHTET1991/JKVIP/releases/download/V1.2.0/JK.VIP.VPN_1.2.0.apk" class="download-btn">
                 <i class="fas fa-download"></i> Download APK (v2.5.0)
             </a>
         </div>
@@ -1332,10 +1332,10 @@
                 <p>Get in touch for support</p>
             </div>
             <div class="social-links">
-                <a href="https://t.me/jk_vipvpn_bot"><i class="fab fa-telegram"></i></a>
-                <a href="https://www.facebook.com/juehtet2025"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://t.me/jk_vipvpn_bot" class="social-link"><i class="fab fa-telegram"></i></a>
+                <a href="https://www.facebook.com/juehtet2025" class="social-link"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://m.me/juehtet2025" class="social-link"><i class="fab fa-facebook-messenger"></i></a>
-                <a href="#" class="social-link"><i class="fas fa-phone"></i></a>
+                <a href="tel:0827472711" class="social-link"><i class="fas fa-phone"></i></a>
             </div>
         </div>
     </section>
